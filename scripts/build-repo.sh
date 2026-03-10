@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# build-repo.sh — Build a proper APT repository from downloaded .deb files
+# build-repo.sh — (Re)build the full APT repository index from all .deb files in the pool.
+# Handles multiple versions for every architecture simultaneously.
 set -euo pipefail
 
-VERSION="${1:?Usage: $0 <version> [gpg_key_id] [gpg_passphrase]}"
+LATEST_VERSION="${1:?Usage: $0 <latest_version> [gpg_key_id] [gpg_passphrase]}"
 GPG_KEY_ID="${2:-}"
 GPG_PASSPHRASE="${3:-}"
 
@@ -12,67 +13,87 @@ COMPONENT="main"
 POOL_DIR="$REPO_ROOT/pool/$COMPONENT/r/rustdesk"
 DISTS_DIR="$REPO_ROOT/dists/$DIST"
 
-echo "==> Building APT repository structure..."
+echo "==> Building APT repository index (all versions in pool)..."
 
-# Map .deb filenames to architectures
-declare -A ARCH_MAP=(
-  ["x86_64"]="amd64"
-  ["aarch64"]="arm64"
-  ["armv7-sciter"]="armhf"
+# Clean old index files so stale entries don't linger
+rm -rf "$DISTS_DIR"
+mkdir -p "$DISTS_DIR/$COMPONENT"
+
+# ── Per-architecture Packages files ──────────────────────────────────────────
+# dpkg-scanpackages cannot filter by arch on its own for mixed pools, so we
+# separate .deb files into per-arch staging dirs, scan, then discard staging.
+
+declare -A ARCH_SUFFIX_MAP=(
+  ["amd64"]="x86_64.deb"
+  ["arm64"]="aarch64.deb"
+  ["armhf"]="armv7-sciter.deb"
 )
 
-# Process each architecture
-for ARCH_KEY in "${!ARCH_MAP[@]}"; do
-  APT_ARCH="${ARCH_MAP[$ARCH_KEY]}"
-  DEB_FILE=$(find "$POOL_DIR" -name "*-${ARCH_KEY}.deb" 2>/dev/null | head -1)
+STAGING_ROOT="$(mktemp -d)"
+trap 'rm -rf "$STAGING_ROOT"' EXIT
 
-  if [ -z "$DEB_FILE" ]; then
-    echo "  [skip] No .deb found for $ARCH_KEY"
+for APT_ARCH in "${!ARCH_SUFFIX_MAP[@]}"; do
+  SUFFIX="${ARCH_SUFFIX_MAP[$APT_ARCH]}"
+  STAGE_POOL="$STAGING_ROOT/$APT_ARCH/pool/$COMPONENT/r/rustdesk"
+  mkdir -p "$STAGE_POOL"
+
+  # Hard-link matching .deb files into the staging pool (no disk copy)
+  find "$POOL_DIR" -name "*-${SUFFIX}" 2>/dev/null | while read -r DEB; do
+    ln "$DEB" "$STAGE_POOL/$(basename "$DEB")" 2>/dev/null \
+      || cp "$DEB" "$STAGE_POOL/$(basename "$DEB")"
+  done
+
+  DEB_COUNT=$(find "$STAGE_POOL" -name '*.deb' | wc -l)
+
+  if [ "$DEB_COUNT" -eq 0 ]; then
+    echo "  [skip] No .deb files for $APT_ARCH"
     continue
   fi
 
   PKG_DIR="$DISTS_DIR/$COMPONENT/binary-$APT_ARCH"
   mkdir -p "$PKG_DIR"
 
-  echo "  [index] $APT_ARCH ($DEB_FILE)"
+  echo "  [index] $APT_ARCH — $DEB_COUNT package(s)"
 
-  # Generate Packages file for this arch
-  # Path must be relative to repo root for apt to resolve pool paths
-  (cd "$REPO_ROOT" && dpkg-scanpackages --arch "$APT_ARCH" \
-    "pool/$COMPONENT/r/rustdesk" /dev/null 2>/dev/null \
-    | grep -A 999 "Architecture: $APT_ARCH" \
-    > "dists/$DIST/$COMPONENT/binary-$APT_ARCH/Packages" || true)
+  # Scan from the staging root so pool paths in Packages are relative to repo root
+  (cd "$STAGING_ROOT/$APT_ARCH" && \
+    dpkg-scanpackages "pool/$COMPONENT/r/rustdesk" /dev/null 2>/dev/null) \
+    > "$PKG_DIR/Packages"
 
-  # If the above grep approach misses files, fall back to full scan
-  if [ ! -s "$PKG_DIR/Packages" ]; then
-    (cd "$REPO_ROOT" && dpkg-scanpackages "pool/$COMPONENT/r/rustdesk" /dev/null \
-      > "dists/$DIST/$COMPONENT/binary-$APT_ARCH/Packages" 2>/dev/null || true)
-  fi
+  # Rewrite pool paths to point at the real (non-staging) pool inside docs/
+  # dpkg-scanpackages emits "Filename: pool/..." relative to its CWD;
+  # we need it relative to the GitHub Pages root (docs/).
+  sed -i "s|^Filename: pool/|Filename: pool/|" "$PKG_DIR/Packages"
 
   gzip -9 -k -f "$PKG_DIR/Packages"
-  echo "  [ok] $APT_ARCH Packages file generated"
+
+  PKG_COUNT=$(grep -c '^Package:' "$PKG_DIR/Packages" || true)
+  echo "  [ok]   $APT_ARCH — $PKG_COUNT entries written"
 done
 
-# ── Generate Release file ──────────────────────────────────────────────────────
+# ── Release file ──────────────────────────────────────────────────────────────
 echo "==> Generating Release file..."
 
 REPO_OWNER="${GITHUB_REPOSITORY_OWNER:-your-github-username}"
-REPO_NAME="${GITHUB_REPOSITORY:-your-github-username/rustdesk-apt}"
-PAGES_URL="https://${REPO_OWNER}.github.io/${REPO_NAME##*/}"
+REPO_SLUG="${GITHUB_REPOSITORY:-your-github-username/rustdesk-apt}"
+
+# Count distinct versions in pool
+TOTAL_VERSIONS=$(find "$POOL_DIR" -name '*.deb' 2>/dev/null \
+  | grep -oP 'rustdesk-\K[^-]+(?=-)' | sort -uV | wc -l || echo "?")
 
 cat > "$DISTS_DIR/Release" <<EOF
 Origin: RustDesk APT Mirror
 Label: RustDesk
 Suite: $DIST
 Codename: $DIST
-Version: $VERSION
+Version: $LATEST_VERSION
 Architectures: amd64 arm64 armhf
 Components: $COMPONENT
-Description: Unofficial APT mirror for RustDesk releases
+Description: Unofficial APT mirror for RustDesk — $TOTAL_VERSIONS version(s) available
 Date: $(date -Ru)
 EOF
 
-# Append checksums (MD5, SHA1, SHA256, SHA512)
+# Append checksums
 for ALGO in MD5Sum SHA1 SHA256 SHA512; do
   echo "$ALGO:" >> "$DISTS_DIR/Release"
   find "$DISTS_DIR/$COMPONENT" -type f | sort | while read -r FILE; do
@@ -88,41 +109,38 @@ for ALGO in MD5Sum SHA1 SHA256 SHA512; do
   done >> "$DISTS_DIR/Release"
 done
 
-# ── Sign the Release file ──────────────────────────────────────────────────────
+# ── GPG signing ───────────────────────────────────────────────────────────────
 if [ -n "$GPG_KEY_ID" ]; then
-  echo "==> Signing Release file with GPG key $GPG_KEY_ID..."
+  echo "==> Signing Release with GPG key $GPG_KEY_ID..."
 
-  export GPG_TTY=$(tty 2>/dev/null || true)
+  export GPG_TTY
+  GPG_TTY=$(tty 2>/dev/null || true)
 
-  if [ -n "$GPG_PASSPHRASE" ]; then
-    GPGOPTS="--batch --passphrase-fd 0 --pinentry-mode loopback"
-  else
-    GPGOPTS="--batch"
-  fi
+  GPGOPTS="--batch --pinentry-mode loopback"
+  [ -n "$GPG_PASSPHRASE" ] && GPGOPTS="$GPGOPTS --passphrase-fd 0"
 
-  # InRelease (inline signature)
   echo "$GPG_PASSPHRASE" | gpg $GPGOPTS \
-    --default-key "$GPG_KEY_ID" \
-    --clearsign \
-    --output "$DISTS_DIR/InRelease" \
-    "$DISTS_DIR/Release"
+    --default-key "$GPG_KEY_ID" --clearsign \
+    --output "$DISTS_DIR/InRelease" "$DISTS_DIR/Release"
 
-  # Release.gpg (detached signature)
   echo "$GPG_PASSPHRASE" | gpg $GPGOPTS \
-    --default-key "$GPG_KEY_ID" \
-    --detach-sign --armor \
-    --output "$DISTS_DIR/Release.gpg" \
-    "$DISTS_DIR/Release"
+    --default-key "$GPG_KEY_ID" --detach-sign --armor \
+    --output "$DISTS_DIR/Release.gpg" "$DISTS_DIR/Release"
 
-  # Export public key for users to import
   gpg --armor --export "$GPG_KEY_ID" > "$REPO_ROOT/rustdesk-apt.gpg"
-  echo "==> Repository signed successfully."
+  echo "==> Signed successfully."
 else
   echo "==> WARNING: Skipping GPG signing (no key configured)."
-  echo "    Users will need 'trusted=yes' in their sources.list entry."
 fi
 
-echo "==> APT repository build complete."
 echo ""
-echo "Repository tree:"
-find "$DISTS_DIR" -type f | sort
+echo "==> Repository build complete. Index summary:"
+for APT_ARCH in amd64 arm64 armhf; do
+  PKG_FILE="$DISTS_DIR/$COMPONENT/binary-$APT_ARCH/Packages"
+  if [ -f "$PKG_FILE" ]; then
+    COUNT=$(grep -c '^Package:' "$PKG_FILE" || echo 0)
+    echo "   $APT_ARCH: $COUNT package(s)"
+  else
+    echo "   $APT_ARCH: (no index)"
+  fi
+done

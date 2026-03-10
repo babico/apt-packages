@@ -1,41 +1,50 @@
 #!/usr/bin/env bash
-# download-debs.sh — Download all RustDesk .deb packages for a given version
+# download-debs.sh — Download all RustDesk .deb packages for a given version.
+# Skips files that already exist in the pool (idempotent).
 set -euo pipefail
 
 VERSION="${1:?Usage: $0 <version>}"
-DEB_DIR="docs/pool/main/r/rustdesk"
+POOL_DIR="docs/pool/main/r/rustdesk"
 
 echo "==> Downloading RustDesk $VERSION .deb packages..."
-mkdir -p "$DEB_DIR"
+mkdir -p "$POOL_DIR"
 
 BASE_URL="https://github.com/rustdesk/rustdesk/releases/download/${VERSION}"
 
+# Package filename suffix → APT architecture label
 declare -A PACKAGES=(
-  ["rustdesk-${VERSION}-x86_64.deb"]="amd64"
-  ["rustdesk-${VERSION}-aarch64.deb"]="arm64"
-  ["rustdesk-${VERSION}-armv7-sciter.deb"]="armhf"
+  ["x86_64.deb"]="amd64"
+  ["aarch64.deb"]="arm64"
+  ["armv7-sciter.deb"]="armhf"
 )
 
-for PKG in "${!PACKAGES[@]}"; do
-  DEST="$DEB_DIR/$PKG"
+ANY_DOWNLOADED=0
+
+for SUFFIX in "${!PACKAGES[@]}"; do
+  PKG="rustdesk-${VERSION}-${SUFFIX}"
+  DEST="$POOL_DIR/$PKG"
   URL="$BASE_URL/$PKG"
 
   if [ -f "$DEST" ]; then
-    echo "  [skip] $PKG already exists"
+    echo "  [skip] $PKG already in pool"
     continue
   fi
 
-  echo "  [download] $PKG"
-  HTTP_STATUS=$(curl -sSL -w "%{http_code}" -o "$DEST" "$URL")
+  echo "  [fetch] $URL"
+  HTTP_STATUS=$(curl -sSL -w "%{http_code}" -o "$DEST.tmp" "$URL")
 
   if [ "$HTTP_STATUS" -eq 200 ]; then
+    mv "$DEST.tmp" "$DEST"
     SIZE=$(du -sh "$DEST" | cut -f1)
-    echo "  [ok] $PKG ($SIZE)"
+    echo "  [ok]   $PKG  ($SIZE)"
+    ANY_DOWNLOADED=1
   else
-    echo "  [warn] $PKG not available (HTTP $HTTP_STATUS), skipping"
-    rm -f "$DEST"
+    rm -f "$DEST.tmp"
+    echo "  [warn] $PKG not available upstream (HTTP $HTTP_STATUS) — skipping"
   fi
 done
 
-echo "==> Download complete."
-ls -lh "$DEB_DIR"/*.deb 2>/dev/null || echo "(no .deb files found)"
+echo "==> Done for $VERSION."
+if [ "$ANY_DOWNLOADED" -eq 0 ]; then
+  echo "  (all files were already present or unavailable upstream)"
+fi
