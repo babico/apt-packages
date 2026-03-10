@@ -102,8 +102,10 @@ cat > docs/index.html <<HTMLEOF
     pre {
       background: var(--code-bg); border: 1px solid var(--border);
       border-radius: 6px; padding: .9rem 1.1rem; overflow-x: auto;
-      font-size: .85rem; color: #e6edf3; margin: .4rem 0;
+      font-size: .82rem; color: #e6edf3; margin: .4rem 0;
+      white-space: pre; word-break: normal;
     }
+    pre code { display: block; min-width: 0; }
     code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
     .comment { color: var(--muted); }
     .step { display: flex; gap: .75rem; align-items: flex-start; margin-bottom: .4rem; }
@@ -185,13 +187,12 @@ cat > docs/index.html <<HTMLEOF
   </header>
 
   <!-- ── Quick Install ──────────────────────────────────── -->
-  <h2>Quick Install (latest — ${LATEST_VERSION})</h2>
+  <h2>Quick Install (latest &mdash; ${LATEST_VERSION})</h2>
   <div class="card">
-    <div class="card-title">One-liner</div>
+    <div class="card-title">One-liner (amd64)</div>
     <pre><code>curl -fsSL ${PAGES_URL}/rustdesk-apt.gpg | sudo gpg --dearmor -o /usr/share/keyrings/rustdesk.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} stable main" \
-  | sudo tee /etc/apt/sources.list.d/rustdesk.list
-sudo apt update && sudo apt install rustdesk</code></pre>
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} stable main" | sudo tee /etc/apt/sources.list.d/rustdesk.list
+sudo apt update &amp;&amp; sudo apt install rustdesk</code></pre>
   </div>
 
   <!-- ── Step-by-step ───────────────────────────────────── -->
@@ -201,8 +202,7 @@ sudo apt update && sudo apt install rustdesk</code></pre>
     <div class="step"><div class="step-num">1</div>
       <div>
         <div class="card-title">Import signing key</div>
-        <pre><code>curl -fsSL ${PAGES_URL}/rustdesk-apt.gpg \
-  | sudo gpg --dearmor -o /usr/share/keyrings/rustdesk.gpg</code></pre>
+        <pre><code>curl -fsSL ${PAGES_URL}/rustdesk-apt.gpg | sudo gpg --dearmor -o /usr/share/keyrings/rustdesk.gpg</code></pre>
       </div>
     </div>
   </div>
@@ -210,18 +210,13 @@ sudo apt update && sudo apt install rustdesk</code></pre>
   <div class="card">
     <div class="step"><div class="step-num">2</div>
       <div>
-        <div class="card-title">Add the repository</div>
-        <pre><code><span class="comment"># amd64 (x86-64)</span>
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} stable main" \
-  | sudo tee /etc/apt/sources.list.d/rustdesk.list
-
-<span class="comment"># arm64 (AArch64 / Raspberry Pi 64-bit)</span>
-echo "deb [arch=arm64 signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} stable main" \
-  | sudo tee /etc/apt/sources.list.d/rustdesk.list
-
-<span class="comment"># armhf (ARMv7 32-bit)</span>
-echo "deb [arch=armhf signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} stable main" \
-  | sudo tee /etc/apt/sources.list.d/rustdesk.list</code></pre>
+        <div class="card-title">Add the repository &mdash; choose your architecture</div>
+        <p style="margin:.4rem 0 .5rem;font-size:.85rem"><span class="comment">amd64 (x86-64):</span></p>
+        <pre><code>echo "deb [arch=amd64 signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} stable main" | sudo tee /etc/apt/sources.list.d/rustdesk.list</code></pre>
+        <p style="margin:.6rem 0 .5rem;font-size:.85rem"><span class="comment">arm64 (AArch64 / Raspberry Pi 64-bit):</span></p>
+        <pre><code>echo "deb [arch=arm64 signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} stable main" | sudo tee /etc/apt/sources.list.d/rustdesk.list</code></pre>
+        <p style="margin:.6rem 0 .5rem;font-size:.85rem"><span class="comment">armhf (ARMv7 32-bit):</span></p>
+        <pre><code>echo "deb [arch=armhf signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} stable main" | sudo tee /etc/apt/sources.list.d/rustdesk.list</code></pre>
       </div>
     </div>
   </div>
@@ -230,7 +225,7 @@ echo "deb [arch=armhf signed-by=/usr/share/keyrings/rustdesk.gpg] ${PAGES_URL} s
     <div class="step"><div class="step-num">3</div>
       <div>
         <div class="card-title">Install</div>
-        <pre><code>sudo apt update && sudo apt install rustdesk</code></pre>
+        <pre><code>sudo apt update &amp;&amp; sudo apt install rustdesk</code></pre>
       </div>
     </div>
   </div>
@@ -289,8 +284,7 @@ sudo apt install rustdesk=1.4.5</code></pre>
   <div class="warn-box">
     ⚠️ If this repo is not GPG-signed, add <code>trusted=yes</code>:
   </div>
-  <pre><code>echo "deb [arch=amd64 trusted=yes] ${PAGES_URL} stable main" \
-  | sudo tee /etc/apt/sources.list.d/rustdesk.list</code></pre>
+  <pre><code>echo "deb [arch=amd64 trusted=yes] ${PAGES_URL} stable main" | sudo tee /etc/apt/sources.list.d/rustdesk.list</code></pre>
 
   <!-- ── Repo details ───────────────────────────────────── -->
   <h2>Repository Details</h2>
