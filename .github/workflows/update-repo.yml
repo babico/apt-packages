@@ -1,25 +1,31 @@
 name: Update RustDesk APT Repository
 
 on:
+  push:
+    branches: [main]
+    paths:
+      # Only trigger on infra changes, not on the generated docs/
+      - '.github/workflows/**'
+      - 'scripts/**'
+      - 'tracked_versions.json'
   schedule:
-    # Check for new releases every 6 hours
     - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
       force_rebuild:
-        description: 'Force full rebuild (re-index pool without re-downloading)'
+        description: 'Re-index pool without re-downloading (fast)'
         required: false
         default: 'false'
       backfill:
-        description: 'Backfill ALL historical releases (first-time setup or recovery)'
+        description: 'Download ALL historical releases'
         required: false
         default: 'false'
       backfill_limit:
-        description: 'Max number of past releases to backfill (0 = all)'
+        description: 'Max releases to backfill (0 = unlimited)'
         required: false
         default: '0'
       specific_version:
-        description: 'Add a single specific version, e.g. 1.3.9 (leave blank to skip)'
+        description: 'Add one specific version tag, e.g. 1.3.9'
         required: false
         default: ''
 
@@ -29,162 +35,162 @@ permissions:
   id-token: write
 
 jobs:
-  check-and-update:
+  # ── 1. Decide what to do ────────────────────────────────────────────────────
+  check:
     runs-on: ubuntu-latest
     outputs:
-      latest_version: ${{ steps.check.outputs.latest_version }}
-      should_update: ${{ steps.check.outputs.should_update }}
-      versions_to_fetch: ${{ steps.check.outputs.versions_to_fetch }}
+      latest_version:    ${{ steps.decide.outputs.latest_version }}
+      versions_to_fetch: ${{ steps.decide.outputs.versions_to_fetch }}
+      should_run:        ${{ steps.decide.outputs.should_run }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
 
-      - name: Determine versions to fetch
-        id: check
+      - name: Decide versions to fetch
+        id: decide
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # ── Latest release ────────────────────────────────────────────────
+          set -euo pipefail
+
+          API="https://api.github.com/repos/rustdesk/rustdesk"
+          AUTH='-H "Authorization: Bearer '"$GH_TOKEN"'"'
+
+          # ── Latest upstream version ──────────────────────────────────────
           LATEST=$(curl -sSf \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
-            "https://api.github.com/repos/rustdesk/rustdesk/releases/latest" \
-            | jq -r '.tag_name')
+            "$API/releases/latest" | jq -r '.tag_name')
           echo "latest_version=$LATEST" >> "$GITHUB_OUTPUT"
-          echo "Latest upstream: $LATEST"
+          echo "Upstream latest: $LATEST"
 
-          # ── Already-tracked versions ──────────────────────────────────────
-          if [ -f "tracked_versions.json" ]; then
-            TRACKED=$(jq -r '.[].version' tracked_versions.json 2>/dev/null || echo "")
+          # ── Already-tracked versions ─────────────────────────────────────
+          if [ -f tracked_versions.json ]; then
+            TRACKED=$(jq -r '.[].version' tracked_versions.json 2>/dev/null || true)
           else
             TRACKED=""
           fi
 
-          # ── Build list of versions to fetch ───────────────────────────────
-          VERSIONS_TO_FETCH="[]"
+          VERSIONS='[]'
 
-          # 1. Single specific version requested
-          if [ -n "${{ github.event.inputs.specific_version }}" ]; then
-            V="${{ github.event.inputs.specific_version }}"
-            if echo "$TRACKED" | grep -qx "$V"; then
-              echo "  [skip] $V already tracked"
-            else
-              VERSIONS_TO_FETCH=$(echo "$VERSIONS_TO_FETCH" | jq --arg v "$V" '. + [$v]')
-              echo "  [queue] specific version $V"
-            fi
+          # ── Auto-bootstrap: if tracked_versions.json is empty → backfill all ──
+          TRACKED_COUNT=$(echo "$TRACKED" | grep -c '\S' || true)
+          if [ "$TRACKED_COUNT" -eq 0 ]; then
+            echo "Bootstrap mode: tracked_versions.json is empty — fetching all releases"
+            EFFECTIVE_BACKFILL=true
+            EFFECTIVE_LIMIT=0
+          else
+            EFFECTIVE_BACKFILL="${{ github.event.inputs.backfill || 'false' }}"
+            EFFECTIVE_LIMIT="${{ github.event.inputs.backfill_limit || '0' }}"
           fi
 
-          # 2. Backfill: fetch all historical releases
-          if [ "${{ github.event.inputs.backfill }}" = "true" ]; then
-            echo "Backfill mode — fetching release list from GitHub API..."
-            LIMIT="${{ github.event.inputs.backfill_limit }}"
-            [ -z "$LIMIT" ] && LIMIT=0
-
-            ALL_VERSIONS=$(curl -sSf \
+          # ── Backfill: fetch all historical releases ──────────────────────
+          if [ "$EFFECTIVE_BACKFILL" = "true" ]; then
+            echo "Fetching full release list from GitHub..."
+            ALL=$(curl -sSf \
               -H "Accept: application/vnd.github+json" \
               -H "Authorization: Bearer $GH_TOKEN" \
-              "https://api.github.com/repos/rustdesk/rustdesk/releases?per_page=100" \
-              | jq -r '[.[] | select(.prerelease == false) | .tag_name] | .[]')
+              "$API/releases?per_page=100" \
+              | jq -r '[.[] | select(.prerelease==false) | .tag_name] | .[]')
 
             COUNT=0
-            for V in $ALL_VERSIONS; do
-              if [ "$LIMIT" -gt 0 ] && [ "$COUNT" -ge "$LIMIT" ]; then
-                echo "  [limit] reached backfill limit of $LIMIT"
+            for V in $ALL; do
+              if [ "$EFFECTIVE_LIMIT" -gt 0 ] && [ "$COUNT" -ge "$EFFECTIVE_LIMIT" ]; then
+                echo "  Reached backfill limit of $EFFECTIVE_LIMIT"
                 break
               fi
-              if echo "$TRACKED" | grep -qx "$V"; then
-                echo "  [skip] $V already tracked"
-              else
-                VERSIONS_TO_FETCH=$(echo "$VERSIONS_TO_FETCH" | jq --arg v "$V" '. + [$v]')
+              if ! echo "$TRACKED" | grep -qx "$V"; then
+                VERSIONS=$(echo "$VERSIONS" | jq --arg v "$V" '. + [$v]')
                 echo "  [queue] $V"
-                COUNT=$((COUNT + 1))
+                COUNT=$((COUNT+1))
+              else
+                echo "  [skip]  $V (already tracked)"
               fi
             done
           fi
 
-          # 3. Always check latest (normal scheduled / manual run)
-          if ! echo "$TRACKED" | grep -qx "$LATEST"; then
-            VERSIONS_TO_FETCH=$(echo "$VERSIONS_TO_FETCH" | jq --arg v "$LATEST" '. + [$v]')
-            echo "  [queue] new latest $LATEST"
+          # ── Specific version requested ───────────────────────────────────
+          SV="${{ github.event.inputs.specific_version || '' }}"
+          if [ -n "$SV" ] && ! echo "$TRACKED" | grep -qx "$SV"; then
+            VERSIONS=$(echo "$VERSIONS" | jq --arg v "$SV" '. + [$v]')
+            echo "  [queue] specific: $SV"
           fi
 
-          # 4. Determine if we need to do anything
-          COUNT=$(echo "$VERSIONS_TO_FETCH" | jq 'length')
-          if [ "$COUNT" -gt 0 ] || [ "${{ github.event.inputs.force_rebuild }}" = "true" ]; then
-            echo "should_update=true" >> "$GITHUB_OUTPUT"
-            echo "Versions to fetch ($COUNT): $VERSIONS_TO_FETCH"
+          # ── Always ensure latest is tracked ─────────────────────────────
+          if ! echo "$TRACKED" | grep -qx "$LATEST"; then
+            VERSIONS=$(echo "$VERSIONS" | jq --arg v "$LATEST" '. + [$v]')
+            echo "  [queue] new latest: $LATEST"
+          fi
+
+          # ── Determine if there is anything to do ─────────────────────────
+          N=$(echo "$VERSIONS" | jq 'length')
+          FORCE="${{ github.event.inputs.force_rebuild || 'false' }}"
+          if [ "$N" -gt 0 ] || [ "$FORCE" = "true" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "Versions queued: $N"
           else
-            echo "should_update=false" >> "$GITHUB_OUTPUT"
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
             echo "Nothing to do."
           fi
 
-          # Pass as compact JSON array string
-          echo "versions_to_fetch=$(echo "$VERSIONS_TO_FETCH" | jq -c '.')" >> "$GITHUB_OUTPUT"
+          echo "versions_to_fetch=$(echo "$VERSIONS" | jq -c '.')" >> "$GITHUB_OUTPUT"
 
-  build-apt-repo:
-    needs: check-and-update
-    if: needs.check-and-update.outputs.should_update == 'true'
+  # ── 2. Download, index, publish ────────────────────────────────────────────
+  build:
+    needs: check
+    if: needs.check.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     env:
-      LATEST_VERSION: ${{ needs.check-and-update.outputs.latest_version }}
-      VERSIONS_TO_FETCH: ${{ needs.check-and-update.outputs.versions_to_fetch }}
+      LATEST_VERSION:    ${{ needs.check.outputs.latest_version }}
+      VERSIONS_TO_FETCH: ${{ needs.check.outputs.versions_to_fetch }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
+          sudo apt-get update -qq
           sudo apt-get install -y dpkg-dev gnupg apt-utils curl jq
 
       - name: Import GPG signing key
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GPG_PASSPHRASE:  ${{ secrets.GPG_PASSPHRASE }}
         run: |
           if [ -n "$GPG_PRIVATE_KEY" ]; then
             echo "$GPG_PRIVATE_KEY" | gpg --batch --passphrase "$GPG_PASSPHRASE" --import
-            GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG \
+            KEY_ID=$(gpg --list-secret-keys --keyid-format LONG \
               | grep '^sec' | awk '{print $2}' | cut -d'/' -f2 | head -1)
-            echo "GPG_KEY_ID=$GPG_KEY_ID" >> "$GITHUB_ENV"
-            echo "GPG key imported: $GPG_KEY_ID"
+            echo "GPG_KEY_ID=$KEY_ID" >> "$GITHUB_ENV"
+            echo "GPG key imported: $KEY_ID"
           else
-            echo "WARNING: No GPG key configured. Repo will be unsigned."
+            echo "WARNING: no GPG key — repo will be unsigned"
           fi
 
       - name: Download new .deb packages
         run: |
-          # Download each version that isn't already in the pool
-          echo "$VERSIONS_TO_FETCH" | jq -r '.[]' | while read -r VERSION; do
-            bash scripts/download-debs.sh "$VERSION"
+          echo "$VERSIONS_TO_FETCH" | jq -r '.[]' | while read -r V; do
+            bash scripts/download-debs.sh "$V"
           done
 
       - name: Update tracked_versions.json
-        run: |
-          bash scripts/update-tracked-versions.sh "$VERSIONS_TO_FETCH"
+        run: bash scripts/update-tracked-versions.sh "$VERSIONS_TO_FETCH"
 
-      - name: Build APT repository index (all versions)
-        run: |
-          bash scripts/build-repo.sh "$LATEST_VERSION" "$GPG_KEY_ID" "${{ secrets.GPG_PASSPHRASE }}"
+      - name: Build APT index (all versions in pool)
+        run: bash scripts/build-repo.sh "$LATEST_VERSION" "$GPG_KEY_ID" "${{ secrets.GPG_PASSPHRASE }}"
 
-      - name: Generate repository landing page
-        run: |
-          bash scripts/generate-index.sh "$LATEST_VERSION"
+      - name: Generate landing page
+        run: bash scripts/generate-index.sh "$LATEST_VERSION"
 
-      - name: Commit and push repo changes
+      - name: Commit metadata + index
         run: |
-          git config user.name "github-actions[bot]"
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add tracked_versions.json
-          # Stage pool only if debs were added (avoid staging huge binary files in history)
-          git add -A -- 'docs/dists/' 'docs/index.html' 'docs/rustdesk-apt.gpg' || true
-          git commit -m "chore: update RustDesk APT repo — latest $LATEST_VERSION" \
+          git add -A -- docs/dists/ docs/index.html docs/rustdesk-apt.gpg
+          git commit -m "chore: APT repo → $LATEST_VERSION ($(echo "$VERSIONS_TO_FETCH" | jq 'length') new)" \
             || echo "Nothing to commit"
           git push
 
@@ -193,17 +199,18 @@ jobs:
         with:
           path: docs/
 
-  deploy-pages:
-    needs: build-apt-repo
+  # ── 3. Deploy to GitHub Pages ───────────────────────────────────────────────
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url }}
     permissions:
       pages: write
       id-token: write
 
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deploy
         uses: actions/deploy-pages@v4

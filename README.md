@@ -1,81 +1,72 @@
-# RustDesk APT Repository (GitHub Pages)
+# RustDesk APT Repository
 
-An automatically-updated APT (`apt`) repository for [RustDesk](https://github.com/rustdesk/rustdesk), hosted free on **GitHub Pages** and rebuilt every 6 hours via GitHub Actions. Supports **all versions** — users can install the latest or pin to any historical release.
+Unofficial APT mirror for [RustDesk](https://github.com/rustdesk/rustdesk), hosted on GitHub Pages. All stable releases are available — install the latest or pin any historical version.
 
-## How It Works
+## How it works
 
-```plaintext
-rustdesk/rustdesk releases → GitHub Actions → APT repo index (all versions) → GitHub Pages
+```
+GitHub API (all releases)
+        ↓
+  GitHub Actions
+  ┌──────────────────────────────────────┐
+  │ 1. Detect new / missing versions     │
+  │ 2. Download .deb → docs/pool/        │
+  │ 3. dpkg-scanpackages → Packages.gz   │
+  │ 4. Generate Release + InRelease      │
+  │ 5. Deploy to GitHub Pages            │
+  └──────────────────────────────────────┘
+        ↓
+  https://YOUR_USERNAME.github.io/rustdesk-repo
 ```
 
-1. A scheduled workflow polls the upstream RustDesk GitHub releases API every 6 hours.
-2. New versions are downloaded (`.deb` for `amd64`, `arm64`, `armhf`) into a persistent pool.
-3. The **entire pool** is re-indexed into a proper `dists/stable/` APT index every run — all versions are always available to `apt`.
-4. `tracked_versions.json` tracks every mirrored version with metadata.
-5. The landing page lists every version with direct `.deb` download links and a search filter.
+**Auto-bootstrap:** on the very first push (when `tracked_versions.json` is empty), the workflow automatically downloads **all** historical RustDesk releases. No manual trigger needed.
 
 ---
 
-## 🚀 Using This Repository (end users)
+## Using this repository
 
-### Install the latest version
+### Install latest
 
 ```bash
-# 1. Import the signing key
-curl -fsSL https://YOUR_USERNAME.github.io/rustdesk-apt/rustdesk-apt.gpg \
+curl -fsSL https://YOUR_USERNAME.github.io/rustdesk-repo/rustdesk-apt.gpg \
   | sudo gpg --dearmor -o /usr/share/keyrings/rustdesk.gpg
 
-# 2. Add the source (replace arch= with: amd64 / arm64 / armhf)
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/rustdesk.gpg] \
-  https://YOUR_USERNAME.github.io/rustdesk-apt stable main" \
+  https://YOUR_USERNAME.github.io/rustdesk-repo stable main" \
   | sudo tee /etc/apt/sources.list.d/rustdesk.list
 
-# 3. Install
 sudo apt update && sudo apt install rustdesk
 ```
 
-### Install a specific (older) version
+### Install a specific version
 
 ```bash
 sudo apt install rustdesk=1.4.5
 ```
 
-### Hold / pin a version (prevent auto-upgrades)
+### Hold / downgrade
 
 ```bash
-sudo apt-mark hold rustdesk      # pin current version
-sudo apt-mark unhold rustdesk    # release the pin
-```
-
-### Downgrade
-
-```bash
-sudo apt install rustdesk=1.4.4
-```
-
-### Without GPG signing
-
-```bash
-echo "deb [arch=amd64 trusted=yes] https://YOUR_USERNAME.github.io/rustdesk-apt stable main" \
-  | sudo tee /etc/apt/sources.list.d/rustdesk.list
-sudo apt update && sudo apt install rustdesk
+sudo apt-mark hold rustdesk          # prevent upgrades
+sudo apt install rustdesk=1.4.4      # downgrade
+sudo apt-mark unhold rustdesk        # re-enable upgrades
 ```
 
 ---
 
-## 🔧 Setting Up Your Own Fork
+## Setting up your own fork
 
-### 1. Fork / create this repository
+### 1. Fork this repo
 
 ```bash
-gh repo create rustdesk-apt --public
+gh repo create rustdesk-repo --public --clone
 ```
 
 ### 2. Enable GitHub Pages
 
 Settings → Pages → Source: **GitHub Actions**
 
-### 3. (Optional) Add a GPG signing key
+### 3. (Optional) GPG signing
 
 ```bash
 gpg --batch --gen-key <<EOF
@@ -89,76 +80,55 @@ EOF
 
 gpg --armor --export-secret-keys "RustDesk APT Mirror" > private.key
 gpg --armor --export "RustDesk APT Mirror" > docs/rustdesk-apt.gpg
+git add docs/rustdesk-apt.gpg && git commit -m "add gpg pubkey"
 ```
 
-Add repo secrets (**Settings → Secrets → Actions**):
+Add these secrets in Settings → Secrets → Actions:
 
-| Secret            | Value                                  |
-| ----------------- | -------------------------------------- |
-| `GPG_PRIVATE_KEY` | Contents of `private.key`              |
-| `GPG_PASSPHRASE`  | Passphrase (empty if `%no-protection`) |
+| Secret | Value |
+|--------|-------|
+| `GPG_PRIVATE_KEY` | Content of `private.key` |
+| `GPG_PASSPHRASE` | Key passphrase (blank if `%no-protection`) |
 
-### 4. Backfill all historical versions (first-time setup)
+### 4. Push — bootstrap runs automatically
 
-Actions → **Update RustDesk APT Repository** → Run workflow:
+```bash
+git push origin main
+```
 
-- Set `backfill` = `true`
-- Set `backfill_limit` = `0` (all) or e.g. `10` (last 10)
-
-> ⚠️ Backfilling all versions downloads ~150–200 MB of `.deb` files.
-> GitHub Pages has a **1 GB soft limit** — use `backfill_limit` to stay well under it.
-
-### 5. Add a single missing version manually
-
-Actions → Run workflow → `specific_version` = `1.3.9`
+The first push triggers the workflow which detects `tracked_versions.json` is empty and downloads **all** upstream releases.
 
 ---
 
-## Workflow Inputs
+## Workflow inputs (manual dispatch)
 
 | Input | Default | Description |
-| ----- | ------- | ----------- |
-| `force_rebuild` | `false` | Re-index pool even if no new versions |
-| `backfill` | `false` | Fetch all historical releases |
-| `backfill_limit` | `0` | Max releases to backfill (0 = all) |
-| `specific_version` | `` | Add one specific version by tag |
+|-------|---------|-------------|
+| `force_rebuild` | false | Re-index without re-downloading |
+| `backfill` | false | Force re-fetch all historical versions |
+| `backfill_limit` | 0 | Limit backfill count (0 = all) |
+| `specific_version` | — | Add a single version by tag |
 
 ---
 
-## Repository Structure
+## Storage
 
-```plaintext
-.
-├── .github/workflows/update-repo.yml   # Main CI/CD workflow
-├── scripts/
-│   ├── download-debs.sh                # Downloads .deb for a given version
-│   ├── build-repo.sh                   # Indexes full pool → Packages/Release files
-│   ├── update-tracked-versions.sh      # Maintains tracked_versions.json
-│   └── generate-index.sh              # Generates HTML landing page
-├── tracked_versions.json               # All mirrored versions + metadata
-└── docs/                               # GitHub Pages root (auto-generated)
-    ├── index.html
-    ├── rustdesk-apt.gpg
-    ├── pool/main/r/rustdesk/           # All .deb files (all versions)
-    │   ├── rustdesk-1.4.6-x86_64.deb
-    │   ├── rustdesk-1.4.5-x86_64.deb
-    │   └── ...
-    └── dists/stable/main/
-        ├── binary-amd64/Packages(.gz)
-        ├── binary-arm64/Packages(.gz)
-        └── binary-armhf/Packages(.gz)
-```
+Each RustDesk version is ~70 MB across 3 architectures.
+GitHub Pages soft limit: **1 GB** (~14 versions).
+Use `backfill_limit` to stay under if needed.
+
+> Note: `.deb` files are in `docs/pool/` which is **gitignored** — they are downloaded fresh on each CI run and never committed to git history.
 
 ---
 
-## Storage considerations
+## Supported architectures
 
-Each RustDesk release is roughly 20–30 MB per architecture × 3 archs ≈ **~70 MB per version**.
-GitHub Pages has a 1 GB soft limit, so you can comfortably host ~14 versions before pruning older ones.
-Use `backfill_limit` to control how many historical versions to keep.
+| Architecture | APT label | Suffix |
+|---|---|---|
+| x86-64 | `amd64` | `x86_64.deb` |
+| AArch64 | `arm64` | `aarch64.deb` |
+| ARMv7 | `armhf` | `armv7-sciter.deb` |
 
 ---
 
-## License
-
-Mirror tooling: MIT. RustDesk itself: [AGPL-3.0](https://github.com/rustdesk/rustdesk/blob/master/LICENCE).
+MIT license. RustDesk is [AGPL-3.0](https://github.com/rustdesk/rustdesk/blob/master/LICENCE).

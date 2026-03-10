@@ -1,0 +1,13 @@
+
+# The pool contains large .deb binaries — track only the index/metadata in git.
+# CI downloads debs fresh each run from upstream GitHub releases.
+docs/pool/
+
+# Keep everything else in docs/ (dists/, index.html, *.gpg)
+!docs/dists/
+!docs/index.html
+!docs/rustdesk-apt.gpg
+
+# Secrets / local keys
+private.key
+*.asc
