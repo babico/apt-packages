@@ -37,7 +37,16 @@ while IFS= read -r APP_ROW; do
   if [ -f "$TRACKING" ]; then
     TOTAL=$(jq 'length' "$TRACKING")
     TOTAL_VERSIONS=$((TOTAL_VERSIONS + TOTAL))
-    LATEST=$(jq -r '.[0].version // ""' "$TRACKING")
+    LATEST=$(jq -r '
+      if length == 0 then
+        ""
+      else
+        max_by([
+          (.released_at // .added_at // ""),
+          ((.version // "") | split(".") | map(tonumber? // 0))
+        ]) | .version // ""
+      end
+    ' "$TRACKING")
 
     while IFS= read -r ROW; do
       V=$(echo "$ROW"        | jq -r '.version')
