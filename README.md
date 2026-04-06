@@ -38,7 +38,7 @@ apps.json (app definitions)
 curl -fsSL https://babico.github.io/apt-packages/apt-repo.gpg \
   | sudo gpg --dearmor -o /usr/share/keyrings/personal-apt.gpg
 
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/personal-apt.gpg] \
+echo "deb [signed-by=/usr/share/keyrings/personal-apt.gpg] \
   https://babico.github.io/apt-packages stable main" \
   | sudo tee /etc/apt/sources.list.d/personal-apt.list
 

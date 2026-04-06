@@ -250,7 +250,7 @@ sudo apt install mattermost-desktop    <span class="dim"># Mattermost Desktop</s
   <!-- ── Unsigned fallback ──────────────────────────────────── -->
   <h2>No GPG key? (unsigned repo)</h2>
   <div class="warn">&#x26A0;&#xFE0F; If the repository is not signed, add <code>trusted=yes</code> to the source line:</div>
-  <pre><code>echo "deb [arch=amd64 trusted=yes] ${URL} stable main" | sudo tee /etc/apt/sources.list.d/personal-apt.list</code></pre>
+  <pre><code>echo "deb [trusted=yes] ${URL} stable main" | sudo tee /etc/apt/sources.list.d/personal-apt.list</code></pre>
 
   <!-- ── Details ────────────────────────────────────────── -->
   <h2>Repository Details</h2>
