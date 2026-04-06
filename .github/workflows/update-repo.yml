@@ -61,6 +61,14 @@ jobs:
           RESULT='{}'
           ANYTHING_NEW=false
 
+          # Fail fast if specific_version is set without specific_app
+          SV_INPUT="${{ github.event.inputs.specific_version || '' }}"
+          SA_INPUT="${{ github.event.inputs.specific_app || '' }}"
+          if [ -n "$SV_INPUT" ] && [ -z "$SA_INPUT" ]; then
+            echo "::error::specific_version requires specific_app to be set"
+            exit 1
+          fi
+
           while IFS= read -r APP_ROW; do
             APP_NAME=$(echo "$APP_ROW" | jq -r '.name')
             GITHUB_REPO=$(echo "$APP_ROW" | jq -r '.github_repo')

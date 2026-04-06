@@ -85,7 +85,7 @@ OWNER="${GITHUB_REPOSITORY_OWNER:-babico}"
 SLUG="${GITHUB_REPOSITORY:-babico/apt-packages}"
 APP_COUNT=$(jq 'length' "$APPS_JSON")
 
-# Count total unique versions across all apps
+# Count total versions across all apps (sum of per-app counts)
 TOTAL_VERSIONS=0
 while IFS= read -r APP_ROW; do
   APP_NAME=$(echo "$APP_ROW" | jq -r '.name')
