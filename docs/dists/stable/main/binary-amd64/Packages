@@ -1,3 +1,23 @@
+Package: mattermost-desktop
+Version: 6.0.4
+Architecture: amd64
+Maintainer: Mattermost, Inc. <feedback@mattermost.com>
+Installed-Size: 301957
+Depends: libnotify4, libxtst6, libnss3
+Recommends: libappindicator3-1
+Filename: pool/main/m/mattermost-desktop/mattermost-desktop_6.0.4-1_amd64.deb
+Size: 96458144
+MD5sum: 72e964e290af33a6a1be1a8a68b90d71
+SHA1: fee77136e394ea6f0d3d1cbf0ea19a60bd1bd93d
+SHA256: 20bd815dadf8d5fb71a3a36c108726c8f360db67880b1d263c139d8c2d2fb148
+Section: default
+Priority: optional
+Homepage: https://mattermost.com
+Description: Mattermost Desktop App
+  Mattermost
+License: Apache-2.0
+Vendor: Mattermost, Inc. <feedback@mattermost.com>
+
 Package: rustdesk
 Version: 1.4.6
 Architecture: amd64
