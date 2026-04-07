@@ -6,7 +6,7 @@ docs/pool/
 # Keep everything else in docs/ (dists/, index.html, *.gpg)
 !docs/dists/
 !docs/index.html
-!docs/rustdesk-apt.gpg
+!docs/apt-repo.gpg
 
 # Secrets / local keys
 private.key
