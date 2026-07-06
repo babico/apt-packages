@@ -1,34 +1,14 @@
-Package: mattermost-desktop
-Version: 6.2.2
-Architecture: arm64
-Maintainer: Mattermost, Inc. <feedback@mattermost.com>
-Installed-Size: 318170
-Depends: libnotify4, libxtst6, libnss3
-Recommends: libappindicator3-1
-Filename: pool/main/m/mattermost-desktop/mattermost-desktop_6.2.2-1_arm64.deb
-Size: 92920920
-MD5sum: 44bca7e51229316a841245dfefe179fc
-SHA1: 11d68c007307dffb6414639adaf571bc444fcffc
-SHA256: 43c8a42716e2957f5f958de1260a8814cba9314ab56f2c7606d4a404cc65f371
-Section: default
-Priority: optional
-Homepage: https://mattermost.com
-Description: Mattermost Desktop App
-  Mattermost
-License: Apache-2.0
-Vendor: Mattermost, Inc. <feedback@mattermost.com>
-
 Package: rustdesk
-Version: 1.4.6
+Version: 1.4.9
 Architecture: arm64
 Maintainer: rustdesk <info@rustdesk.com>
-Depends: libgtk-3-0, libxcb-randr0, libxdo3 | libxdo4, libxfixes3, libxcb-shape0, libxcb-xfixes0, libasound2, libsystemd0, curl, libva2, libva-drm2, libva-x11-2, libgstreamer-plugins-base1.0-0, libpam0g, gstreamer1.0-pipewire
+Depends: libgtk-3-0t64 | libgtk-3-0, libxcb-randr0, libxdo3 | libxdo4, libxfixes3, libxcb-shape0, libxcb-xfixes0, libasound2t64 | libasound2, libsystemd0, curl, libva2, libva-drm2, libva-x11-2, libgstreamer-plugins-base1.0-0, libpam0g, gstreamer1.0-pipewire
 Recommends: libayatana-appindicator3-1
-Filename: pool/main/r/rustdesk/rustdesk-1.4.6-aarch64.deb
-Size: 21469056
-MD5sum: 6d6e86d123fdbc9a81cbd9107df79bf7
-SHA1: bfa34bb63e6e1d7bf9dcd02ae3be339576acd564
-SHA256: d767b042c53a169f4bc6273d884a238fc44501a9fda2095fb05820dfc538b34c
+Filename: pool/main/r/rustdesk/rustdesk-1.4.9-aarch64.deb
+Size: 21694032
+MD5sum: 78c58d1145fb3b9c85510f6f25be3d27
+SHA1: afcb60837be066551da113f2d9d51339ebc84f51
+SHA256: ce62c996f14d33f3bbe3a330e953644a44bace7f05885a7953f7395d69fb49c0
 Section: net
 Priority: optional
 Homepage: https://rustdesk.com
