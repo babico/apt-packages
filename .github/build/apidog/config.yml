@@ -6,3 +6,4 @@ license: Freeware
 source: zip_download
 pool_letter: a
 extract_regex: "apidog_([0-9.]+)_"
+changelog_url: https://apidog.canny.io/changelog
