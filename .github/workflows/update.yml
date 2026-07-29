@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: 'Force rebuild even if no new versions detected'
+        description: 'Force redownload all packages'
         required: false
         default: ''
 
@@ -53,7 +53,7 @@ jobs:
           GPG_KEY_ID: ${{ env.GPG_KEY_ID }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
-          bash scripts/build-all.sh "${{ github.event.inputs.force || '' }}"
+          bash scripts/build-all.sh "${{ github.event.inputs.force || 'force' }}"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
