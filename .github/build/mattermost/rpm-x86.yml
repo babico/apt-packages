@@ -1,0 +1,4 @@
+format: rpm
+arch: x86
+suffix: linux-x86_64.rpm
+download_url: "https://github.com/mattermost/desktop/releases/download/v${VERSION}/mattermost-desktop-${VERSION}-linux-x86_64.rpm"

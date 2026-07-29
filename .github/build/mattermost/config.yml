@@ -1,0 +1,9 @@
+name: mattermost-desktop
+display: Mattermost Desktop
+description: Mattermost desktop application for team messaging
+homepage: https://mattermost.com
+license: MIT
+source: github
+repo: mattermost/desktop
+pool_letter: m
+version_prefix: v

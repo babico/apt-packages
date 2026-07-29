@@ -1,0 +1,5 @@
+format: deb
+arch: amd64
+suffix: linux_amd64.deb
+download_url: "https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_linux_amd64.deb"
+pool_name: "gh_${VERSION}_linux_amd64.deb"

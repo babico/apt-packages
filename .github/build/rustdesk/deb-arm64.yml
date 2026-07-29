@@ -1,0 +1,5 @@
+format: deb
+arch: arm64
+suffix: aarch64.deb
+download_url: "https://github.com/rustdesk/rustdesk/releases/download/${VERSION}/rustdesk-${VERSION}-aarch64.deb"
+pool_name: "rustdesk-${VERSION}-aarch64.deb"

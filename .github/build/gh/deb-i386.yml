@@ -1,0 +1,5 @@
+format: deb
+arch: i386
+suffix: linux_386.deb
+download_url: "https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_linux_386.deb"
+pool_name: "gh_${VERSION}_linux_386.deb"

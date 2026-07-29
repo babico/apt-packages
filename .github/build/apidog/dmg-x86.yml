@@ -1,0 +1,5 @@
+format: dmg
+arch: x86
+suffix: macOS-latest.zip
+download_url: "https://file-assets.apidog.com/download/Apidog-${SUFFIX}"
+extract: true

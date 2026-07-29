@@ -1,0 +1,42 @@
+Name:           apidog
+Version:        __VERSION__
+Release:        1
+Summary:        API design, development, and documentation platform
+License:        Freeware
+URL:            https://apidog.com
+Source0:        apidog-manual.tar.gz
+
+%description
+Apidog is an API design, development, and documentation platform.
+
+%prep
+%setup -q -n apidog-__VERSION__
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/bin
+mkdir -p %{buildroot}/usr/share/apidog
+mkdir -p %{buildroot}/usr/share/applications
+mkdir -p %{buildroot}/usr/share/pixmaps
+
+cp -r * %{buildroot}/usr/share/apidog/
+ln -sf /usr/share/apidog/apidog %{buildroot}/usr/bin/apidog
+
+cat > %{buildroot}/usr/share/applications/apidog.desktop <<EOF
+[Desktop Entry]
+Name=Apidog
+Comment=API design, development, and documentation platform
+Exec=/usr/bin/apidog
+Icon=apidog
+Terminal=false
+Type=Application
+Categories=Development;
+EOF
+
+%files
+/usr/bin/apidog
+/usr/share/apidog/
+/usr/share/applications/apidog.desktop
+
+%changelog
+__CHANGELOG__

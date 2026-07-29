@@ -1,0 +1,5 @@
+format: deb
+arch: amd64
+suffix: x86_64.deb
+download_url: "https://github.com/rustdesk/rustdesk/releases/download/${VERSION}/rustdesk-${VERSION}-x86_64.deb"
+pool_name: "rustdesk-${VERSION}-x86_64.deb"

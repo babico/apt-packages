@@ -1,35 +1,40 @@
 #!/usr/bin/env bash
-# build-repo.sh — Build a full APT repository index from ALL .deb files in the pool.
-# Scans all apps defined in apps.json. Every version present in docs/pool/ is indexed.
+# build-apt.sh — Build APT repository index from pool.
+# Reads .github/build/*/config.yml and deb-*.yml for app metadata.
 set -euo pipefail
 
 GPG_KEY_ID="${1:-}"
 GPG_PASSPHRASE="${2:-}"
 
-APPS_JSON="apps.json"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+BUILD_DIR="$SCRIPT_DIR/../.github/build"
 REPO_ROOT="docs"
 DIST="stable"
 COMP="main"
 POOL="$REPO_ROOT/pool/$COMP"
 DISTS="$REPO_ROOT/dists/$DIST"
+PY="$SCRIPT_DIR/yaml-get.py"
+
+yget() { python3 "$PY" "$@"; }
 
 echo "==> Building APT index from pool (all apps, all versions)..."
 
-# Gather all unique architectures from all apps
-ALL_ARCHS=$(jq -r '.[].architectures | keys[]' "$APPS_JSON" | sort -u | tr '\n' ' ')
+ALL_ARCHS=""
+for dir in "$BUILD_DIR"/*/; do
+  for bf in "$dir"deb-*.yml; do
+    [ -f "$bf" ] || continue
+    arch=$(yget "$bf" arch 2>/dev/null || true)
+    [ -n "$arch" ] && ALL_ARCHS="$ALL_ARCHS $arch"
+  done
+done
+ALL_ARCHS=$(echo "$ALL_ARCHS" | tr ' ' '\n' | sort -u | tr '\n' ' ')
 echo "    Architectures: $ALL_ARCHS"
 
-# Count total debs
 TOTAL_DEBS=$(find "$POOL" -name '*.deb' 2>/dev/null | wc -l || echo 0)
 echo "    Total .deb files in pool: $TOTAL_DEBS"
 
-# Clean stale index
 rm -rf "$DISTS"
 mkdir -p "$DISTS/$COMP"
-
-# ── Per-architecture Packages files ──────────────────────────────────────────
-# We link each arch's debs into a temp staging tree so dpkg-scanpackages
-# sees only the right files per architecture.
 
 STAGING=$(mktemp -d)
 trap 'rm -rf "$STAGING"' EXIT
@@ -38,25 +43,35 @@ for ARCH in $ALL_ARCHS; do
   STAGE_POOL="$STAGING/$ARCH/pool/$COMP"
   mkdir -p "$STAGE_POOL"
 
-  # For each app, find debs matching this architecture's suffix
-  while IFS= read -r APP_ROW; do
-    APP_NAME=$(echo "$APP_ROW" | jq -r '.name')
-    POOL_LETTER=$(echo "$APP_ROW" | jq -r '.pool_letter')
-    SUFFIX=$(echo "$APP_ROW" | jq -r --arg a "$ARCH" '.architectures[$a] // empty')
+  for dir in "$BUILD_DIR"/*/; do
+    [ -f "$dir/config.yml" ] || continue
+    local name pool_letter suffix
+    name=$(yget "$dir/config.yml" name)
+    pool_letter=$(yget "$dir/config.yml" pool_letter)
+    suffix=""
 
-    [ -z "$SUFFIX" ] && continue  # this app doesn't have this arch
+    for bf in "$dir"deb-*.yml; do
+      [ -f "$bf" ] || continue
+      local bf_arch
+      bf_arch=$(yget "$bf" arch)
+      if [ "$bf_arch" = "$ARCH" ]; then
+        suffix=$(yget "$bf" suffix)
+        break
+      fi
+    done
+    [ -z "$suffix" ] && continue
 
-    SRC_POOL="$POOL/${POOL_LETTER}/${APP_NAME}"
+    SRC_POOL="$POOL/${pool_letter}/${name}"
     [ -d "$SRC_POOL" ] || continue
 
-    STAGE_APP="$STAGE_POOL/${POOL_LETTER}/${APP_NAME}"
+    STAGE_APP="$STAGE_POOL/${pool_letter}/${name}"
     mkdir -p "$STAGE_APP"
 
     while IFS= read -r -d '' DEB; do
       ln "$DEB" "$STAGE_APP/$(basename "$DEB")" 2>/dev/null \
         || cp "$DEB" "$STAGE_APP/$(basename "$DEB")"
-    done < <(find "$SRC_POOL" -name "*${SUFFIX}" -print0 2>/dev/null)
-  done < <(jq -c '.[]' "$APPS_JSON")
+    done < <(find "$SRC_POOL" -name "*${suffix}" -print0 2>/dev/null)
+  done
 
   COUNT=$(find "$STAGE_POOL" -name '*.deb' 2>/dev/null | wc -l)
   if [ "$COUNT" -eq 0 ]; then
@@ -67,34 +82,35 @@ for ARCH in $ALL_ARCHS; do
   PKG_DIR="$DISTS/$COMP/binary-$ARCH"
   mkdir -p "$PKG_DIR"
 
-  # Scan from staging root → Filename paths will be pool/...
   (cd "$STAGING/$ARCH" && \
     dpkg-scanpackages "pool/$COMP" /dev/null 2>/dev/null) \
     > "$PKG_DIR/Packages"
 
   FIRST=$(grep '^Filename:' "$PKG_DIR/Packages" | head -1)
   echo "  [ok]  $ARCH — $COUNT pkg(s)  ($FIRST)"
-
   gzip -9 -k -f "$PKG_DIR/Packages"
 done
 
-# ── Release file ──────────────────────────────────────────────────────────────
 echo "==> Generating Release..."
 
 OWNER="${GITHUB_REPOSITORY_OWNER:-babico}"
-SLUG="${GITHUB_REPOSITORY:-babico/apt-packages}"
-APP_COUNT=$(jq 'length' "$APPS_JSON")
+SLUG="${GITHUB_REPOSITORY:-babico/packages}"
 
-# Count total versions across all apps (sum of per-app counts)
+APP_COUNT=0
+for dir in "$BUILD_DIR"/*/; do
+  [ -f "$dir/config.yml" ] && APP_COUNT=$((APP_COUNT + 1))
+done
+
 TOTAL_VERSIONS=0
-while IFS= read -r APP_ROW; do
-  APP_NAME=$(echo "$APP_ROW" | jq -r '.name')
-  TFILE="tracked_versions/${APP_NAME}.json"
-  if [ -f "$TFILE" ]; then
-    V_COUNT=$(jq 'length' "$TFILE")
-    TOTAL_VERSIONS=$((TOTAL_VERSIONS + V_COUNT))
+for dir in "$BUILD_DIR"/*/; do
+  [ -f "$dir/config.yml" ] || continue
+  name=$(yget "$dir/config.yml" name)
+  tf="tracked_versions/${name}.json"
+  if [ -f "$tf" ]; then
+    vc=$(jq 'length' "$tf" 2>/dev/null || echo 0)
+    TOTAL_VERSIONS=$((TOTAL_VERSIONS + vc))
   fi
-done < <(jq -c '.[]' "$APPS_JSON")
+done
 
 cat > "$DISTS/Release" <<RELEASE
 Origin: Personal APT Mirror
@@ -122,7 +138,6 @@ for ALGO in MD5Sum SHA1 SHA256 SHA512; do
   done >> "$DISTS/Release"
 done
 
-# ── GPG sign ──────────────────────────────────────────────────────────────────
 if [ -n "$GPG_KEY_ID" ]; then
   echo "==> Signing with key $GPG_KEY_ID..."
   export GPG_TTY; GPG_TTY=$(tty 2>/dev/null || true)

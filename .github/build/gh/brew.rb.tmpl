@@ -1,0 +1,41 @@
+class Gh < Formula
+  desc "GitHub's official command line tool"
+  homepage "https://cli.github.com"
+  license "MIT"
+
+  on_macos do
+    on_arm do
+      url "${MAC_ARM_URL}"
+      sha256 "${MAC_ARM_SHA256}"
+    end
+    on_intel do
+      url "${MAC_X86_URL}"
+      sha256 "${MAC_X86_SHA256}"
+    end
+
+    version "${VERSION}"
+
+    def install
+      system "unzip", "-q", pkgfiles.first
+      bin.install "bin/gh"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "${LINUX_ARM_URL}"
+      sha256 "${LINUX_ARM_SHA256}"
+    end
+    on_intel do
+      url "${LINUX_AMD64_URL}"
+      sha256 "${LINUX_AMD64_SHA256}"
+    end
+
+    version "${VERSION}"
+
+    def install
+      system "dpkg", "-x", pkgfiles.first, "."
+      bin.install "usr/bin/gh"
+    end
+  end
+end

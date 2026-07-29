@@ -1,0 +1,4 @@
+format: dmg
+arch: arm
+suffix: mac-arm64.dmg
+download_url: "https://github.com/mattermost/desktop/releases/download/v${VERSION}/mattermost-desktop-${VERSION}-mac-arm64.dmg"

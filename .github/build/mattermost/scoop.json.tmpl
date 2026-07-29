@@ -1,0 +1,22 @@
+{
+    "version": "${VERSION}",
+    "description": "Mattermost desktop application for team messaging",
+    "homepage": "https://mattermost.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mattermost/desktop/releases/download/v${VERSION}/mattermost-desktop-${VERSION}-win-x64.msi",
+            "hash": "${SHA256}"
+        }
+    },
+    "installer": {
+        "script": [
+            "msiexec /i \"$dir\\mattermost-desktop-${VERSION}-win-x64.msi\" /qn /norestart"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "msiexec /x \"{Mattermost}\" /qn /norestart"
+        ]
+    }
+}

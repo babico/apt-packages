@@ -1,0 +1,6 @@
+format: deb
+arch: amd64
+suffix: linux-deb-latest.zip
+download_url: "https://file-assets.apidog.com/download/Apidog-${SUFFIX}"
+extract: true
+inner_pattern: "apidog_${VERSION}_amd64.deb"

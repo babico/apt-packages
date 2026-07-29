@@ -1,0 +1,5 @@
+format: deb
+arch: arm64
+suffix: arm64.deb
+download_url: "https://releases.mattermost.com/desktop/${VERSION}/mattermost-desktop_${VERSION}-1_arm64.deb"
+pool_name: "mattermost-desktop_${VERSION}-1_arm64.deb"

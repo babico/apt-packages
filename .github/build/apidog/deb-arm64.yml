@@ -1,0 +1,6 @@
+format: deb
+arch: arm64
+suffix: linux-arm64-deb-latest.zip
+download_url: "https://file-assets.apidog.com/download/Apidog-${SUFFIX}"
+extract: true
+inner_pattern: "apidog_${VERSION}_arm64.deb"

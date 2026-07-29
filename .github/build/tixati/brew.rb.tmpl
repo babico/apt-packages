@@ -1,0 +1,16 @@
+class Tixati < Formula
+  desc "Feature-rich BitTorrent client"
+  homepage "https://tixati.com"
+  license "Freeware"
+
+  disable! if OS.mac?
+
+  url "${LINUX_AMD64_URL}"
+  sha256 "${LINUX_AMD64_SHA256}"
+  version "${VERSION}"
+
+  def install
+    system "dpkg", "-x", pkgfiles.first, "."
+    bin.install "usr/bin/tixati" if File.exist?("usr/bin/tixati")
+  end
+end

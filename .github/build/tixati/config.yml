@@ -1,0 +1,10 @@
+name: tixati
+display: Tixati
+description: Feature-rich BitTorrent client
+homepage: https://tixati.com
+license: Freeware
+source: http_listing
+listing_url: https://download.tixati.com/
+version_match: "tixati_([0-9.]+)-1_amd64\\.deb"
+pool_letter: t
+version_prefix: ""

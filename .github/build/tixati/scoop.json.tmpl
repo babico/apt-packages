@@ -1,0 +1,24 @@
+{
+    "version": "${VERSION}",
+    "description": "Feature-rich BitTorrent client",
+    "homepage": "https://tixati.com",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.tixati.com/tixati-${VERSION}-1.win64-install.exe",
+            "hash": "${SHA256}"
+        }
+    },
+    "installer": {
+        "script": [
+            "$process = Start-Process -FilePath \"$dir\\tixati-${VERSION}-1.win64-install.exe\" -ArgumentList @('/VERYSILENT', '/NORESTART') -Wait -PassThru",
+            "exit $process.ExitCode"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$process = Start-Process -FilePath \"$env:PROGRAMFILES\\Tixati\\tixati.exe\" -ArgumentList @('/UNINST', '/VERYSILENT', '/NORESTART') -Wait -PassThru",
+            "exit $process.ExitCode"
+        ]
+    }
+}

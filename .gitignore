@@ -1,9 +1,11 @@
 
 # The pool contains large .deb binaries — track only the index/metadata in git.
 # CI downloads debs fresh each run from upstream GitHub releases.
-docs/pool/
+docs/pool/**/*.deb
 
-# Keep everything else in docs/ (dists/, index.html, *.gpg)
+# .rpm files in pool are tracked (built by CI, served via Pages)
+
+# Keep metadata in docs/
 !docs/dists/
 !docs/index.html
 !docs/apt-repo.gpg

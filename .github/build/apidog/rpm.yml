@@ -1,0 +1,6 @@
+format: rpm
+arch: noarch
+source: manual
+suffix: linux-manual-latest.tar.gz
+download_url: "https://file-assets.apidog.com/download/Apidog-${SUFFIX}"
+spec_template: apidog.spec.in

@@ -84,11 +84,11 @@
   <header>
     <h1>&#x1F5A5; <em>Personal</em> APT Repository</h1>
     <p style="margin-top:.4rem">
-      Unofficial APT mirror &mdash; <strong>2 app(s)</strong>, <strong>75 version(s)</strong> available.
-      Updated: <strong>2026-07-06 14:49 UTC</strong>
+      Unofficial APT mirror &mdash; <strong>5 app(s)</strong>, <strong>90 version(s)</strong> available.
+      Updated: <strong>2026-07-29 07:56 UTC</strong>
     </p>
     <div class="nav-apps">
-      <a href="#rustdesk" class="nav-app">RustDesk</a> <a href="#mattermost-desktop" class="nav-app">Mattermost Desktop</a> 
+      <a href="#rustdesk" class="nav-app">RustDesk</a> <a href="#mattermost-desktop" class="nav-app">Mattermost Desktop</a> <a href="#tixati" class="nav-app">Tixati</a> <a href="#gh" class="nav-app">GitHub CLI</a> <a href="#apidog" class="nav-app">Apidog</a> 
     </div>
   </header>
 
@@ -100,7 +100,7 @@
       <div class="num">1</div>
       <div style="width:100%">
         <h3>Import the signing key</h3>
-        <pre><code>curl -fsSL https://babico.github.io/apt-packages/apt-repo.gpg | sudo gpg --dearmor -o /usr/share/keyrings/personal-apt.gpg</code></pre>
+        <pre><code>curl -fsSL https://babico.github.io/packages/apt-repo.gpg | sudo gpg --dearmor -o /usr/share/keyrings/personal-apt.gpg</code></pre>
       </div>
     </div>
   </div>
@@ -110,7 +110,7 @@
       <div class="num">2</div>
       <div style="width:100%">
         <h3>Add the repository</h3>
-        <pre><code>echo "deb [signed-by=/usr/share/keyrings/personal-apt.gpg] https://babico.github.io/apt-packages stable main" | sudo tee /etc/apt/sources.list.d/personal-apt.list</code></pre>
+        <pre><code>echo "deb [signed-by=/usr/share/keyrings/personal-apt.gpg] https://babico.github.io/packages stable main" | sudo tee /etc/apt/sources.list.d/personal-apt.list</code></pre>
       </div>
     </div>
   </div>
@@ -154,196 +154,196 @@ sudo apt install mattermost-desktop    <span class="dim"># Mattermost Desktop</s
           <td><code>1.4.9</code> <span class="badge-latest">latest</span></td>
           <td>2026-07-06</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.9-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.9-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.9-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.9-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.9-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.9-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.9" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.8</code></td>
           <td>2026-06-21</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.8-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.8-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.8-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.8-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.8-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.8-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.8" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.7</code></td>
           <td>2026-06-02</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.7-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.7-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.7-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.7-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.7-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.7-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.7" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.6</code></td>
           <td>2026-03-05</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.6-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.6-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.6-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.6-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.6-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.6-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.6" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.5</code></td>
           <td>2026-01-09</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.5-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.5-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.5-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.5-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.5-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.5-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.5" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.4</code></td>
           <td>2025-11-19</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.4-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.4-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.4-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.4-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.4-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.4-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.4" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.3</code></td>
           <td>2025-10-17</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.3-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.3-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.3-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.3-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.3-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.3-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.3" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.2</code></td>
           <td>2025-09-15</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.2-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.2-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.2-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.2-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.2-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.2-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.1</code></td>
           <td>2025-07-29</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.1-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.1-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.1-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.1-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.1-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.1-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.4.0</code></td>
           <td>2025-05-11</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.0-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.0-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.4.0-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.0-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.0-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.4.0-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.9</code></td>
           <td>2025-03-31</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.9-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.9-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.9-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.9-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.9-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.9-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.9" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.8</code></td>
           <td>2025-02-22</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.8-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.8-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.8-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.8-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.8-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.8-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.8" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.7</code></td>
           <td>2025-01-20</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.7-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.7-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.7-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.7-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.7-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.7-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.7" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.6</code></td>
           <td>2024-12-22</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.6-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.6-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.6-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.6-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.6-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.6-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.6" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.5</code></td>
           <td>2024-12-05</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.5-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.5-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.5-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.5-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.5-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.5-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.5" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.4</code></td>
           <td>2024-12-04</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.4-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.4-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.4-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.4-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.4-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.4-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.4" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.3</code></td>
           <td>2024-11-26</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.3-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.3-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.3-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.3-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.3-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.3-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.3" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.2</code></td>
           <td>2024-10-29</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.2-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.2-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.2-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.2-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.2-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.2-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.1</code></td>
           <td>2024-09-20</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.1-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.1-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.1-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.1-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.1-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.1-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.3.0</code></td>
           <td>2024-08-19</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.0-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.0-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.3.0-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.0-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.0-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.3.0-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.3.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.2.7</code></td>
           <td>2024-07-23</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.7-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.7-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.7-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.7-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.7-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.7-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.2.7" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.2.6</code></td>
           <td>2024-06-23</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.6-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.6-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.6-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.6-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.6-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.6-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.2.6" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.2.3-2</code></td>
           <td>2024-04-07</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-2-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-2-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-2-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-2-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-2-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-2-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.2.3-2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.2.3-1</code></td>
           <td>2024-02-19</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-1-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-1-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-1-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-1-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-1-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-1-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.2.3-1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.2.3</code></td>
           <td>2023-10-13</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.3-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.3-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.2.3" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.2.2</code></td>
           <td>2023-08-22</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.2-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.2-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.2-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.2-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.2-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.2-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.2.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.2.1</code></td>
           <td>2023-07-12</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.1-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.1-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.1-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.1-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.1-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.1-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.2.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>1.2.0</code></td>
           <td>2023-07-03</td>
           <td><code>amd64, arm64, armhf</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.0-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.0-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/r/rustdesk/rustdesk-1.2.0-armv7-sciter.deb">armhf</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.0-x86_64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.0-aarch64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/r/rustdesk/rustdesk-1.2.0-armv7-sciter.deb">armhf</a></td>
           <td><a class="dl" href="https://github.com/rustdesk/rustdesk/releases/tag/1.2.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
@@ -425,281 +425,464 @@ sudo apt install mattermost-desktop    <span class="dim"># Mattermost Desktop</s
           <td><code>6.2.2</code> <span class="badge-latest">latest</span></td>
           <td>2026-06-23</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.2-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.2-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.2.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.2.1</code></td>
           <td>2026-06-17</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.2.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.2.0</code></td>
           <td>2026-05-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.2.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.2.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.1.2</code></td>
           <td>2026-04-21</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.2-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.2-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.1.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.1.1</code></td>
           <td>2026-04-08</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.1.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.1.0</code></td>
           <td>2025-01-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.1.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.1.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.0.4</code></td>
           <td>2026-01-20</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.4-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.4-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.4-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.4-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.0.4" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.0.3</code></td>
           <td>2026-01-16</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.3-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.3-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.3-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.3-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.0.3" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.0.2</code></td>
           <td>2025-12-11</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.2-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.2-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.0.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.0.1</code></td>
           <td>2025-11-18</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.0.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>6.0.0</code></td>
           <td>2025-11-14</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_6.0.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v6.0.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.9.2</code></td>
           <td>2024-12-16</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.2-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.2-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.9.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.9.1</code></td>
           <td>2024-11-20</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.9.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.9.0</code></td>
           <td>2024-08-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.9.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.9.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.8.1</code></td>
           <td>2024-06-13</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.8.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.8.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.8.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.8.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.8.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.8.0</code></td>
           <td>2024-05-17</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.8.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.8.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.8.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.8.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.8.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.7.0</code></td>
           <td>2024-03-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.7.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.7.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.7.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.7.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.7.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.6.0</code></td>
           <td>2023-12-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.6.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.6.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.6.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.6.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.6.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.5.1</code></td>
           <td>2023-10-03</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.5.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.5.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.5.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.5.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.5.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.5.0</code></td>
           <td>2023-09-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.5.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.5.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.5.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.5.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.5.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.4.0</code></td>
           <td>2023-06-19</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.4.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.4.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.4.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.4.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.4.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.3.1</code></td>
           <td>2023-04-04</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.3.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.3.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.3.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.3.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.3.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.2.2</code></td>
           <td>2022-12-06</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.2.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.2.2-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.2.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.2.2-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.2.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.2.1</code></td>
           <td>2022-11-16</td>
           <td><code>amd64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.2.1-1_amd64.deb">amd64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.2.1-1_amd64.deb">amd64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.2.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.2.0</code></td>
           <td>2022-10-31</td>
           <td><code>amd64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.2.0-1_amd64.deb">amd64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.2.0-1_amd64.deb">amd64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.2.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.13.5</code></td>
           <td>2026-03-24</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.5-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.5-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.5-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.5-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.13.5" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.13.4</code></td>
           <td>2026-01-29</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.4-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.4-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.4-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.4-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.13.4" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.13.3</code></td>
           <td>2026-01-22</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.3-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.3-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.3-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.3-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.13.3" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.13.2</code></td>
           <td>2025-10-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.2-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.2-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.13.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.13.1</code></td>
           <td>2025-09-10</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.13.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.13.0</code></td>
           <td>2025-08-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.13.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.13.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.12.1</code></td>
           <td>2025-05-29</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.12.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.12.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.12.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.12.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.12.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.12.0</code></td>
           <td>2025-05-16</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.12.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.12.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.12.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.12.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.12.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.11.3</code></td>
           <td>2025-05-23</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.3-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.3-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.3-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.3-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.11.3" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.11.2</code></td>
           <td>2025-03-11</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.2-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.2-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.11.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.11.1</code></td>
           <td>2025-03-01</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.11.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.11.0</code></td>
           <td>2025-02-14</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.11.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.11.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.10.2</code></td>
           <td>2024-12-17</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.2-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.2-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.2-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.10.2" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.10.1</code></td>
           <td>2024-11-20</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.1-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.1-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.1-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.10.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         <tr>
           <td><code>5.10.0</code></td>
           <td>2024-11-15</td>
           <td><code>amd64, arm64</code></td>
-          <td class="dl-cell"><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/apt-packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.0-1_arm64.deb">arm64</a></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.0-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/m/mattermost-desktop/mattermost-desktop_5.10.0-1_arm64.deb">arm64</a></td>
           <td><a class="dl" href="https://github.com/mattermost/desktop/releases/tag/v5.10.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <hr class="section-sep" />
+  <section id="tixati">
+    <h2>&#x1F4E6; Tixati</h2>
+    <p>Feature-rich BitTorrent client &mdash; <a href="https://tixati.com">https://tixati.com</a>
+      &nbsp;|&nbsp; <a href="https://github.com/null/releases">GitHub releases</a>
+      &nbsp;|&nbsp; <strong>4 version(s)</strong> &nbsp;|&nbsp; Latest: <code>3.44</code></p>
+
+    <div class="card">
+      <h3>Install Tixati</h3>
+      <pre><code>sudo apt install tixati</code></pre>
+      <h3 style="margin-top:.7rem">Install specific version</h3><pre><code>sudo apt install tixati=3.44</code></pre>
+    </div>
+
+    <h3>All versions (4)</h3>
+    <input class="search" type="search" placeholder="Filter Tixati versions&hellip;" oninput="filterTable(this,'tbody-tixati')" />
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Version</th><th>Released</th><th>Architectures</th><th>Download .deb</th><th>Changelog</th></tr>
+        </thead>
+        <tbody id="tbody-tixati">
+          
+        <tr class="row-latest">
+          <td><code>3.44</code> <span class="badge-latest">latest</span></td>
+          <td>2026-06-22</td>
+          <td><code>amd64, i386</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/t/tixati/tixati_3.44-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/t/tixati/tixati_3.44-1_i686.deb">i386</a></td>
+          <td><a class="dl" href="https://github.com/null/releases/tag/3.44" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>3.43</code></td>
+          <td>2026-06-19</td>
+          <td><code>amd64, i386</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/t/tixati/tixati_3.43-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/t/tixati/tixati_3.43-1_i686.deb">i386</a></td>
+          <td><a class="dl" href="https://github.com/null/releases/tag/3.43" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>3.42</code></td>
+          <td>2025-12-05</td>
+          <td><code>amd64, i386</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/t/tixati/tixati_3.42-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/t/tixati/tixati_3.42-1_i686.deb">i386</a></td>
+          <td><a class="dl" href="https://github.com/null/releases/tag/3.42" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>3.41</code></td>
+          <td>2025-12-04</td>
+          <td><code>amd64, i386</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/t/tixati/tixati_3.41-1_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/t/tixati/tixati_3.41-1_i686.deb">i386</a></td>
+          <td><a class="dl" href="https://github.com/null/releases/tag/3.41" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <hr class="section-sep" />
+  <section id="gh">
+    <h2>&#x1F4E6; GitHub CLI</h2>
+    <p>GitHub's official command line tool &mdash; <a href="https://cli.github.com">https://cli.github.com</a>
+      &nbsp;|&nbsp; <a href="https://github.com/cli/cli/releases">GitHub releases</a>
+      &nbsp;|&nbsp; <strong>10 version(s)</strong> &nbsp;|&nbsp; Latest: <code>2.96.0</code></p>
+
+    <div class="card">
+      <h3>Install GitHub CLI</h3>
+      <pre><code>sudo apt install gh</code></pre>
+      <h3 style="margin-top:.7rem">Install specific version</h3><pre><code>sudo apt install gh=2.96.0</code></pre>
+    </div>
+
+    <h3>All versions (10)</h3>
+    <input class="search" type="search" placeholder="Filter GitHub CLI versions&hellip;" oninput="filterTable(this,'tbody-gh')" />
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Version</th><th>Released</th><th>Architectures</th><th>Download .deb</th><th>Changelog</th></tr>
+        </thead>
+        <tbody id="tbody-gh">
+          
+        <tr class="row-latest">
+          <td><code>2.96.0</code> <span class="badge-latest">latest</span></td>
+          <td>2026-07-02</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.96.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.96.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.96.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.96.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.96.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.95.0</code></td>
+          <td>2026-06-17</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.95.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.95.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.95.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.95.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.95.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.94.0</code></td>
+          <td>2026-06-10</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.94.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.94.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.94.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.94.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.94.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.93.0</code></td>
+          <td>2026-05-27</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.93.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.93.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.93.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.93.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.93.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.92.0</code></td>
+          <td>2026-04-28</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.92.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.92.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.92.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.92.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.92.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.91.0</code></td>
+          <td>2026-04-22</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.91.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.91.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.91.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.91.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.91.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.90.0</code></td>
+          <td>2026-04-16</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.90.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.90.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.90.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.90.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.90.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.89.0</code></td>
+          <td>2026-03-26</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.89.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.89.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.89.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.89.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.89.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.88.1</code></td>
+          <td>2026-03-12</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.88.1_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.88.1_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.88.1_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.88.1_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.88.1" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        <tr>
+          <td><code>2.88.0</code></td>
+          <td>2026-03-10</td>
+          <td><code>amd64, i386, arm64, armhf</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.88.0_linux_amd64.deb">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.88.0_linux_386.deb">i386</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.88.0_linux_arm64.deb">arm64</a><a class="dl" href="https://babico.github.io/packages/pool/main/g/gh/gh_2.88.0_linux_armv6.deb">armhf</a></td>
+          <td><a class="dl" href="https://github.com/cli/cli/releases/tag/v2.88.0" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <hr class="section-sep" />
+  <section id="apidog">
+    <h2>&#x1F4E6; Apidog</h2>
+    <p>API design, development, and documentation platform &mdash; <a href="https://apidog.com">https://apidog.com</a>
+      &nbsp;|&nbsp; <a href="https://github.com/null/releases">GitHub releases</a>
+      &nbsp;|&nbsp; <strong>1 version(s)</strong> &nbsp;|&nbsp; Latest: <code>2.8.40</code></p>
+
+    <div class="card">
+      <h3>Install Apidog</h3>
+      <pre><code>sudo apt install apidog</code></pre>
+      <h3 style="margin-top:.7rem">Install specific version</h3><pre><code>sudo apt install apidog=2.8.40</code></pre>
+    </div>
+
+    <h3>All versions (1)</h3>
+    <input class="search" type="search" placeholder="Filter Apidog versions&hellip;" oninput="filterTable(this,'tbody-apidog')" />
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Version</th><th>Released</th><th>Architectures</th><th>Download .deb</th><th>Changelog</th></tr>
+        </thead>
+        <tbody id="tbody-apidog">
+          
+        <tr class="row-latest">
+          <td><code>2.8.40</code> <span class="badge-latest">latest</span></td>
+          <td>2026-07-25</td>
+          <td><code>amd64, arm64</code></td>
+          <td class="dl-cell"><a class="dl" href="https://babico.github.io/packages/pool/main/a/apidog/null">amd64</a><a class="dl" href="https://babico.github.io/packages/pool/main/a/apidog/null">arm64</a></td>
+          <td><a class="dl" href="https://github.com/null/releases/tag/null2.8.40" target="_blank" rel="noopener">notes&nbsp;&#8599;</a></td>
         </tr>
         </tbody>
       </table>
@@ -710,23 +893,23 @@ sudo apt install mattermost-desktop    <span class="dim"># Mattermost Desktop</s
   <!-- ── Unsigned fallback ──────────────────────────────────── -->
   <h2>No GPG key? (unsigned repo)</h2>
   <div class="warn">&#x26A0;&#xFE0F; If the repository is not signed, add <code>trusted=yes</code> to the source line:</div>
-  <pre><code>echo "deb [trusted=yes] https://babico.github.io/apt-packages stable main" | sudo tee /etc/apt/sources.list.d/personal-apt.list</code></pre>
+  <pre><code>echo "deb [trusted=yes] https://babico.github.io/packages stable main" | sudo tee /etc/apt/sources.list.d/personal-apt.list</code></pre>
 
   <!-- ── Details ────────────────────────────────────────── -->
   <h2>Repository Details</h2>
   <div class="card">
     <table class="info">
-      <tr><th>Repository URL</th>    <td><a href="https://babico.github.io/apt-packages">https://babico.github.io/apt-packages</a></td></tr>
+      <tr><th>Repository URL</th>    <td><a href="https://babico.github.io/packages">https://babico.github.io/packages</a></td></tr>
       <tr><th>Distribution</th>      <td><code>stable</code></td></tr>
       <tr><th>Component</th>         <td><code>main</code></td></tr>
-      <tr><th>Total apps</th>        <td>2</td></tr>
-      <tr><th>Total versions</th>    <td>75</td></tr>
-      <tr><th>Mirror source</th>     <td><a href="https://github.com/babico/apt-packages">github.com/babico/apt-packages</a></td></tr>
+      <tr><th>Total apps</th>        <td>5</td></tr>
+      <tr><th>Total versions</th>    <td>90</td></tr>
+      <tr><th>Mirror source</th>     <td><a href="https://github.com/babico/packages">github.com/babico/packages</a></td></tr>
     </table>
   </div>
 
   <footer>
-    <p>Unofficial community mirror. Not affiliated with any upstream project. &nbsp;&middot;&nbsp; <a href="https://github.com/babico/apt-packages">View source</a></p>
+    <p>Unofficial community mirror. Not affiliated with any upstream project. &nbsp;&middot;&nbsp; <a href="https://github.com/babico/packages">View source</a></p>
   </footer>
 </div>
 <script>

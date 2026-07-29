@@ -1,0 +1,9 @@
+name: gh
+display: GitHub CLI
+description: GitHub's official command line tool
+homepage: https://cli.github.com
+license: MIT
+source: github
+repo: cli/cli
+pool_letter: g
+version_prefix: v

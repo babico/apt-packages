@@ -1,0 +1,5 @@
+format: deb
+arch: i386
+suffix: i686.deb
+download_url: "https://download.tixati.com/tixati_${VERSION}-1_i686.deb"
+pool_name: "tixati_${VERSION}-1_i686.deb"

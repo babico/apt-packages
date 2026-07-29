@@ -1,0 +1,4 @@
+format: dmg
+arch: arm
+suffix: aarch64.dmg
+download_url: "https://github.com/rustdesk/rustdesk/releases/download/${VERSION}/rustdesk-${VERSION}-aarch64.dmg"

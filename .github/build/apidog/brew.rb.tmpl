@@ -1,0 +1,47 @@
+class Apidog < Formula
+  desc "API design, development, and documentation platform"
+  homepage "https://apidog.com"
+  license "Freeware"
+
+  on_macos do
+    on_arm do
+      url "${MAC_ARM_URL}"
+      sha256 "${MAC_ARM_SHA256}"
+    end
+    on_intel do
+      url "${MAC_X86_URL}"
+      sha256 "${MAC_X86_SHA256}"
+    end
+
+    version "${VERSION}"
+
+    def install
+      system "unzip", "-q", pkgfiles.first
+      dmg = Dir["*.dmg"].first
+      system "hdiutil", "attach", "-nobrowse", "-mountpoint", "#{var}/mount", dmg
+      mv "#{var}/mount/Apidog.app", libexec
+      system "hdiutil", "detach", "#{var}/mount"
+      appdir.install libexec/"Apidog.app"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "${LINUX_ARM_URL}"
+      sha256 "${LINUX_ARM_SHA256}"
+    end
+    on_intel do
+      url "${LINUX_AMD64_URL}"
+      sha256 "${LINUX_AMD64_SHA256}"
+    end
+
+    version "${VERSION}"
+
+    def install
+      system "unzip", "-q", pkgfiles.first
+      deb = Dir["*.deb"].first
+      system "dpkg", "-x", deb, "."
+      bin.install "usr/bin/apidog" if File.exist?("usr/bin/apidog")
+    end
+  end
+end

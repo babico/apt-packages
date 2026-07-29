@@ -1,0 +1,4 @@
+format: dmg
+arch: x86
+suffix: x86_64.dmg
+download_url: "https://github.com/rustdesk/rustdesk/releases/download/${VERSION}/rustdesk-${VERSION}-x86_64.dmg"

@@ -1,0 +1,9 @@
+name: rustdesk
+display: RustDesk
+description: Open-source remote desktop software
+homepage: https://rustdesk.com
+license: AGPL-3.0
+source: github
+repo: rustdesk/rustdesk
+pool_letter: r
+version_prefix: ""

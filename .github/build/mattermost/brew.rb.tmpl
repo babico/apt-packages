@@ -1,0 +1,36 @@
+class MattermostDesktop < Formula
+  desc "Mattermost desktop application for team messaging"
+  homepage "https://mattermost.com"
+  license "MIT"
+
+  on_macos do
+    on_arm do
+      url "${MAC_ARM_URL}"
+      sha256 "${MAC_ARM_SHA256}"
+    end
+    on_intel do
+      url "${MAC_X86_URL}"
+      sha256 "${MAC_X86_SHA256}"
+    end
+
+    version "${VERSION}"
+
+    def install
+      system "hdiutil", "attach", "-nobrowse", "-mountpoint", "#{var}/mount", pkgfiles.first
+      mv "#{var}/mount/Mattermost.app", libexec
+      system "hdiutil", "detach", "#{var}/mount"
+      appdir.install libexec/"Mattermost.app"
+    end
+  end
+
+  on_linux do
+    url "${LINUX_RPM_URL}"
+    sha256 "${LINUX_RPM_SHA256}"
+    version "${VERSION}"
+
+    def install
+      system "rpm2cpio", pkgfiles.first, "|", "cpio", "-idmv"
+      bin.install "usr/bin/mattermost-desktop" if File.exist?("usr/bin/mattermost-desktop")
+    end
+  end
+end
