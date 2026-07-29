@@ -256,11 +256,12 @@ build_scoop() {
   [ -f "$tmpl" ] || return 0
 
   local config="$BUILD_DIR/$product/config.yml"
-  local source repo prefix lurl
+  local source repo prefix lurl product_name
   source=$(yget "$config" source)
   repo=$(yget "$config" repo)
   prefix=$(yget "$config" version_prefix)
   lurl=$(yget "$config" listing_url)
+  product_name=$(yget "$config" name)
 
   local url64="" hash64="" url32="" hash32=""
 
@@ -308,7 +309,7 @@ build_scoop() {
   out=$(echo "$out" | sed "s|\${SHA256_64}|$hash64|g")
   out=$(echo "$out" | sed "s|\${SHA256_32}|$hash32|g")
   out=$(echo "$out" | sed "s|\${SHA256}|$hash64|g")
-  echo "$out" > "$SCOOP_DIR/${product}.json"
+  echo "$out" > "$SCOOP_DIR/${product_name}.json"
   echo "    [scoop] updated"
 }
 
@@ -320,6 +321,8 @@ build_brew() {
   [ -f "$tmpl" ] || return 0
 
   local config="$BUILD_DIR/$product/config.yml"
+  local product_name
+  product_name=$(yget "$config" name)
   local mac_arm_url="" mac_arm_hash=""
   local mac_x86_url="" mac_x86_hash=""
   local lin_arm_url="" lin_arm_hash=""
@@ -373,7 +376,7 @@ build_brew() {
   out=$(echo "$out" | sed "s|\${LINUX_AMD64_SHA256}|$lin_amd64_hash|g")
   out=$(echo "$out" | sed "s|\${LINUX_RPM_URL}|$lin_rpm_url|g")
   out=$(echo "$out" | sed "s|\${LINUX_RPM_SHA256}|$lin_rpm_hash|g")
-  echo "$out" > "$BREW_DIR/${product}.rb"
+  echo "$out" > "$BREW_DIR/${product_name}.rb"
   echo "    [brew]  updated"
 }
 
