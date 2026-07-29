@@ -45,14 +45,12 @@ for ARCH in $ALL_ARCHS; do
 
   for dir in "$BUILD_DIR"/*/; do
     [ -f "$dir/config.yml" ] || continue
-    local name pool_letter suffix
     name=$(yget "$dir/config.yml" name)
     pool_letter=$(yget "$dir/config.yml" pool_letter)
     suffix=""
 
     for bf in "$dir"deb-*.yml; do
       [ -f "$bf" ] || continue
-      local bf_arch
       bf_arch=$(yget "$bf" arch)
       if [ "$bf_arch" = "$ARCH" ]; then
         suffix=$(yget "$bf" suffix)
