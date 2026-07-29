@@ -1,0 +1,33 @@
+Package: gh
+Version: 2.96.0
+Architecture: i386
+Maintainer: GitHub
+Installed-Size: 37537
+Depends: git
+Filename: pool/main/g/gh/gh_2.96.0_linux_386.deb
+Size: 13766024
+MD5sum: 4e58ca3d146778849cf0f471774d94ea
+SHA1: f29f7bfe97b344914471f9d3e8de615cf277c32f
+SHA256: f146e594bdba65fdc499c43c86d6d07c0e0733257152067c4f9fe2acee4f4629
+Priority: optional
+Homepage: https://github.com/cli/cli
+Description: GitHub’s official command line tool.
+License: MIT
+
+Package: tixati
+Version: 3.44-1
+Architecture: i386
+Maintainer: Tixati-support <support@tixati.com>
+Installed-Size: 35000
+Depends: libc6 (>= 2.7), libgtk-3-0 (>= 3.6.0), zlib1g (>= 1:1.1.4)
+Filename: pool/main/t/tixati/tixati_3.44-1_i686.deb
+Size: 18519964
+MD5sum: 005403eb097781dfc7d4f189fd42c1cb
+SHA1: f05e669108ae862539b08895803bfef2097fe16f
+SHA256: a441e82ea5499637a8de2d895c1bc41ff7a5d5abd18582d6e09d2f0d86946d1d
+Section: Network
+Priority: optional
+Homepage: http://www.tixati.com
+Description: Tixati P2P Client
+ Tixati P2P Client
+

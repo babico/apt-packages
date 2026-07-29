@@ -1,26 +1,37 @@
 [
   {
     "version": "3.44",
-    "released_at": "2026-06-22T05:26:00Z",
-    "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386"]
+    "released_at": "2026-06-22T05:26:16Z",
+    "added_at": "2026-07-29T08:31:34Z",
+    "archs": [
+      "amd64"
+    ]
   },
   {
     "version": "3.43",
     "released_at": "2026-06-19T02:57:00Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386"]
+    "archs": [
+      "amd64",
+      "i386"
+    ]
   },
   {
     "version": "3.42",
     "released_at": "2025-12-05T05:02:00Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386"]
+    "archs": [
+      "amd64",
+      "i386"
+    ]
   },
   {
     "version": "3.41",
     "released_at": "2025-12-04T00:36:00Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386"]
+    "archs": [
+      "amd64",
+      "i386"
+    ]
   }
 ]

@@ -1,3 +1,19 @@
+Package: gh
+Version: 2.96.0
+Architecture: amd64
+Maintainer: GitHub
+Installed-Size: 40165
+Depends: git
+Filename: pool/main/g/gh/gh_2.96.0_linux_amd64.deb
+Size: 14725844
+MD5sum: 184d07105d556fbbec589f623628f279
+SHA1: 3c42fdd9ba1c1e3c44943b51c2425315d6b3484f
+SHA256: 11a731f4e0ca8c3db96ef6d2cc404dcab3d78247ce0e07c53e07117e7627d6a1
+Priority: optional
+Homepage: https://github.com/cli/cli
+Description: GitHub’s official command line tool.
+License: MIT
+
 Package: rustdesk
 Version: 1.4.9
 Architecture: amd64
@@ -13,4 +29,21 @@ Section: net
 Priority: optional
 Homepage: https://rustdesk.com
 Description: A remote control software.
+
+Package: tixati
+Version: 3.44-1
+Architecture: amd64
+Maintainer: Tixati-support <support@tixati.com>
+Installed-Size: 35000
+Depends: libc6 (>= 2.17), libgtk-3-0 (>= 3.6.0) | libgtk-3-0t64 (>= 3.6.0), zlib1g (>= 1:1.1.4)
+Filename: pool/main/t/tixati/tixati_3.44-1_amd64.deb
+Size: 18319436
+MD5sum: f89545dc48e45100dc960e42fb46b6eb
+SHA1: be10f6d31d9f4648532b3509d638383cbd3250e8
+SHA256: d61eef3d932e77c4a93f4bf77975090532aa41cd76516f22cd601589310c2f68
+Section: Network
+Priority: optional
+Homepage: http://www.tixati.com
+Description: Tixati P2P Client
+ Tixati P2P Client
 

@@ -1,0 +1,13 @@
+{
+    "version": "2.96.0",
+    "description": "GitHub's official command line tool",
+    "homepage": "https://cli.github.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cli/cli/releases/download/v2.96.0/gh_2.96.0_windows_amd64.zip",
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+    },
+    "bin": "bin/gh.exe"
+}

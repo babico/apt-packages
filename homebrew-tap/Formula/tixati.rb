@@ -6,7 +6,7 @@ class Tixati < Formula
   disable! if OS.mac?
 
   url "https://download.tixati.com/tixati_3.44-1_amd64.deb"
-  sha256 "placeholder"
+  sha256 "d61eef3d932e77c4a93f4bf77975090532aa41cd76516f22cd601589310c2f68"
   version "3.44"
 
   def install

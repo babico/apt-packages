@@ -1,3 +1,19 @@
+Package: gh
+Version: 2.96.0
+Architecture: armhf
+Maintainer: GitHub
+Installed-Size: 37389
+Depends: git
+Filename: pool/main/g/gh/gh_2.96.0_linux_armv6.deb
+Size: 13862422
+MD5sum: 43ee67e02bc7abfa2cd25b0ea7fb8de4
+SHA1: 285c9e5e06447bed740234e390ec8d9b9f898f98
+SHA256: 3391bd860facbe320a32d82dd52ab96a725c7e1668b16fc6f4cb2b04c85c7b2f
+Priority: optional
+Homepage: https://github.com/cli/cli
+Description: GitHub’s official command line tool.
+License: MIT
+
 Package: rustdesk
 Version: 1.4.9
 Architecture: armhf

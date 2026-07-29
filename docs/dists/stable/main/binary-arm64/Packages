@@ -1,3 +1,19 @@
+Package: gh
+Version: 2.96.0
+Architecture: arm64
+Maintainer: GitHub
+Installed-Size: 37389
+Depends: git
+Filename: pool/main/g/gh/gh_2.96.0_linux_arm64.deb
+Size: 13382568
+MD5sum: 3128eaa22cd84ef4506b47799d6ddcc2
+SHA1: 6ff44ba5616037acb25b108862692325022c9da6
+SHA256: 334dd9c6704fc1656a48e475c5a3a9aa32bbadb87fa1777513bc626af4a99e89
+Priority: optional
+Homepage: https://github.com/cli/cli
+Description: GitHub’s official command line tool.
+License: MIT
+
 Package: rustdesk
 Version: 1.4.9
 Architecture: arm64

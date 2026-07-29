@@ -2,61 +2,109 @@
   {
     "version": "2.96.0",
     "released_at": "2026-07-02T21:31:04Z",
-    "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "added_at": "2026-07-29T08:31:34Z",
+    "archs": [
+      "amd64",
+      "arm64"
+    ]
   },
   {
     "version": "2.95.0",
     "released_at": "2026-06-17T19:55:07Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   },
   {
     "version": "2.94.0",
     "released_at": "2026-06-10T21:47:49Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   },
   {
     "version": "2.93.0",
     "released_at": "2026-05-27T17:47:48Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   },
   {
     "version": "2.92.0",
     "released_at": "2026-04-28T11:42:05Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   },
   {
     "version": "2.91.0",
     "released_at": "2026-04-22T10:40:12Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   },
   {
     "version": "2.90.0",
     "released_at": "2026-04-16T18:19:28Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   },
   {
     "version": "2.89.0",
     "released_at": "2026-03-26T14:22:43Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   },
   {
     "version": "2.88.1",
     "released_at": "2026-03-12T12:24:41Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   },
   {
     "version": "2.88.0",
     "released_at": "2026-03-10T19:40:45Z",
     "added_at": "2026-07-29T00:00:00Z",
-    "archs": ["amd64", "i386", "arm64", "armhf"]
+    "archs": [
+      "amd64",
+      "i386",
+      "arm64",
+      "armhf"
+    ]
   }
 ]

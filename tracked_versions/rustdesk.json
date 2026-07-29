@@ -2,12 +2,8 @@
   {
     "version": "1.4.9",
     "released_at": "2026-07-06T10:02:30Z",
-    "added_at": "2026-07-06T14:49:23Z",
-    "archs": [
-      "amd64",
-      "arm64",
-      "armhf"
-    ]
+    "added_at": "2026-07-29T08:31:34Z",
+    "archs": []
   },
   {
     "version": "1.4.8",
