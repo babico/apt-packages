@@ -230,7 +230,7 @@ download() {
           changelog="* $(date -u +'%a %b %d %Y') Apidog Build - ${version}-1\n- Automated build from upstream tarball"
           sed -e "s/__VERSION__/$version/g" -e "s|__CHANGELOG__|$changelog|g" \
             "$spec_tmpl" > "$rpm_root/SPECS/apidog.spec"
-          (cd "$rpm_root" && rpmbuild -ba SPECS/apidog.spec 2>&1 | tail -3) || true
+          (cd "$rpm_root" && rpmbuild -ba --define "_topdir $PWD" SPECS/apidog.spec 2>&1 | tail -3) || true
           local rpm_file
           rpm_file=$(find "$rpm_root/RPMS" -name "*.rpm" 2>/dev/null | head -1)
           if [ -f "$rpm_file" ]; then
@@ -270,7 +270,7 @@ build_scoop() {
       assets=$(curl -sSf -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GH_TOKEN" \
         "https://api.github.com/repos/${repo}/releases/latest")
       win_name=$(echo "$assets" | jq -r \
-        '[.assets[] | select(.name | test("win(dows)?[_-]?(amd64|x64)"; "i")) | select(.name | test("blockmap"; "i") | not)] |
+        '[.assets[] | select(.name | test("\\.(exe|msi|zip)$"; "i")) | select(.name | test("win|x86|x64|amd64|arm64"; "i")) | select(.name | test("blockmap"; "i") | not)] |
          (map(select(.name | endswith(".msi"))) | .[0].name // empty) //
          (map(select(.name | endswith(".exe"))) | .[0].name // empty) //
          (map(select(.name | endswith(".zip"))) | .[0].name // empty)')
