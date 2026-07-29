@@ -103,7 +103,7 @@ TOTAL_VERSIONS=0
 for dir in "$BUILD_DIR"/*/; do
   [ -f "$dir/config.yml" ] || continue
   name=$(yget "$dir/config.yml" name)
-  tf="tracked_versions/${name}.json"
+  tf="tracked/${name}.json"
   if [ -f "$tf" ]; then
     vc=$(jq 'length' "$tf" 2>/dev/null || echo 0)
     TOTAL_VERSIONS=$((TOTAL_VERSIONS + vc))

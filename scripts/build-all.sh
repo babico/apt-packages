@@ -5,10 +5,10 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR="$SCRIPT_DIR/../.github/build"
-TRACK_DIR="$SCRIPT_DIR/../tracked_versions"
+TRACK_DIR="$SCRIPT_DIR/../tracked"
 POOL_DIR="$SCRIPT_DIR/../docs/pool/main"
-SCOOP_DIR="$SCRIPT_DIR/../scoop-bucket/bucket"
-BREW_DIR="$SCRIPT_DIR/../homebrew-tap/Formula"
+SCOOP_DIR="$SCRIPT_DIR/../bucket"
+BREW_DIR="$SCRIPT_DIR/../Formula"
 NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 GH_TOKEN="${GH_TOKEN:-}"
 FORCE="${1:-}"
@@ -439,9 +439,9 @@ main() {
     git config user.name "github-actions[bot]"
     git config user.email "github-actions[bot]@users.noreply.github.com"
     git pull --rebase origin main || true
-    git add -A tracked_versions/
+    git add -A tracked/
     git add -A docs/dists/ docs/index.html docs/apt-repo.gpg 2>/dev/null || true
-    git add -A scoop-bucket/bucket/ homebrew-tap/Formula/
+    git add -A bucket/ Formula/
     git add -A .github/build/
     git commit -m "chore: update packages" || echo "Nothing to commit"
     git push

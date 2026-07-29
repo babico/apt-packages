@@ -4,7 +4,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR="$SCRIPT_DIR/../.github/build"
-TRACK_DIR="$SCRIPT_DIR/../tracked_versions"
+TRACK_DIR="$SCRIPT_DIR/../tracked"
 PY="$SCRIPT_DIR/yaml-get.py"
 
 yget() { python3 "$PY" "$@"; }
