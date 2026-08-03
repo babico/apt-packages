@@ -6,14 +6,14 @@ class Apidog < Formula
   on_macos do
     on_arm do
       url "https://file-assets.apidog.com/download/Apidog-macOS-arm64-latest.zip"
-      sha256 "f0845229a343540c6b93926c2e1115bc7704909b4146bb50ac9ad16456054d9d"
+      sha256 "585cc4463abdc4bffbb92e20c5b6e5768f13d7827e214d9db5080b9761d09e54"
     end
     on_intel do
       url "https://file-assets.apidog.com/download/Apidog-macOS-latest.zip"
-      sha256 "4e1d5643a8a12ef4f855b8720c19eaa2f74968854c06e2edc87b86507b8f4fe4"
+      sha256 "7fa9283bc14beec995437eae99052bb0b3d1a42a82a1b98b361df9bd18106b50"
     end
 
-    version "2.8.40"
+    version "2.8.41"
 
     def install
       system "unzip", "-q", pkgfiles.first
@@ -28,14 +28,14 @@ class Apidog < Formula
   on_linux do
     on_arm do
       url "https://file-assets.apidog.com/download/Apidog-linux-arm64-deb-latest.zip"
-      sha256 "6df6a3c23bf7ca78a04150056349e7f774a22a9f8d332945ac8e1255d38163e0"
+      sha256 "e9afb177e11ad9a97337fd662b19723338249c22d22508cb9c48eb1c4e0ae9c4"
     end
     on_intel do
       url "https://file-assets.apidog.com/download/Apidog-linux-deb-latest.zip"
-      sha256 "58eb59f1f50286086daf5d8b81c7e90368158af11731226fdc6170ff401d2ecc"
+      sha256 "7e9523f14a10997063406c663de82cecf1a10e1b11753950d7216d8dc891cd47"
     end
 
-    version "2.8.40"
+    version "2.8.41"
 
     def install
       system "unzip", "-q", pkgfiles.first
