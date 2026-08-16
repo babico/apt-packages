@@ -1,12 +1,12 @@
 {
-    "version": "2.8.42",
+    "version": "2.8.43",
     "description": "API design, development, and documentation platform",
     "homepage": "https://apidog.com",
     "license": "Freeware",
     "architecture": {
         "64bit": {
             "url": "https://file-assets.apidog.com/download/Apidog-windows-latest.zip",
-            "hash": "e1e8d939a8786c6c9696d9a38374f9d6a8bf7ccef326135f9a769bf643a2acd5"
+            "hash": "566e46be2847b17ac326cefa7f9bb26e9dc932ae8426e4f29a42fdb66332d321"
         },
         "32bit": {
             "url": "https://file-assets.apidog.com/download/Apidog-win32-latest.zip",
