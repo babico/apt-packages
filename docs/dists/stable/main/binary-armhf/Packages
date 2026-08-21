@@ -1,14 +1,14 @@
 Package: gh
-Version: 2.97.0
+Version: 2.98.0
 Architecture: armhf
 Maintainer: GitHub
-Installed-Size: 37583
+Installed-Size: 37968
 Depends: git
-Filename: pool/main/g/gh/gh_2.97.0_linux_armv6.deb
-Size: 13974434
-MD5sum: b82f25825f3929cd1f74f49ceab169e0
-SHA1: 9f48260488fb44c719628103cef4b9da7570d435
-SHA256: 90abc205f422631492784455a40c52fd62a2744e3441cb7507406a9307445cb7
+Filename: pool/main/g/gh/gh_2.98.0_linux_armv6.deb
+Size: 14072156
+MD5sum: 98eb32e59af614f4e9ce01f43912339f
+SHA1: cca751de48e6ce0d19c9c92de29aacd4dbc76b8b
+SHA256: 748b91b17833cf568b99d16f836492363c2d6b4f26ecd7dfc49ebb08b06ad93d
 Priority: optional
 Homepage: https://github.com/cli/cli
 Description: GitHub’s official command line tool.
