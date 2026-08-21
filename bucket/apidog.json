@@ -10,7 +10,7 @@
         },
         "32bit": {
             "url": "https://file-assets.apidog.com/download/Apidog-win32-latest.zip",
-            "hash": "afaae8dd56ad616edda57d35d48f011da7d331b2fdde714ab1a00573f6f077d8"
+            "hash": "583205e85786fb9d61d557772260ea7248b1d1900fe64b64b979eb4824a797d7"
         }
     },
     "extract_dir": "Apidog",
